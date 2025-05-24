@@ -1,0 +1,11 @@
+﻿
+
+@media (min-width: 768px) {
+    .navbar-header {
+        float: none;
+        margin-left: -15px;
+        margin-right: -15px;
+        background-color: black;
+    }
+
+}

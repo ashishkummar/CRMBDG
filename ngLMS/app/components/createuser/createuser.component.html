@@ -1,0 +1,128 @@
+<app-loader [loader]="isLoading"></app-loader>
+<div class="row">
+    <div class="col-md-3">
+        <div class="list-group userList">
+            <a *ngFor="let au of ActiveUsers" class='list-group-item list-group-item-action' (click)="SelectUser(au.id)">
+                {{au.name}} - {{au.userID}}
+            </a>
+        </div>
+    </div>
+    <div class="col-md-9">
+        <form [formGroup]="myform" novalidate>
+            <input type="hidden"
+                   formControlName="ID">
+            <div class="form-group"
+                 [ngClass]="{
+        'has-error': myform.get('name').invalid && (myform.get('name').dirty || myform.get('name').touched),
+        'has-success': myform.get('name').valid && (myform.get('name').dirty || myform.get('name').touched)
+      }">
+                <label>Name</label>
+                <input type="text"
+                       class="form-control"
+                       formControlName="name">
+                <div class="invalid-feedback"
+                     *ngIf="myform.get('name').errors && (myform.get('name').dirty || myform.get('name').touched)">
+                    <div class="invalid-tooltip" *ngIf="myform.get('name').errors.required">Name is required</div>
+                </div>
+            </div>
+
+            <div class="form-group"
+                 [ngClass]="{
+        'has-error':  myform.get('userID').invalid && (myform.get('userID').dirty || myform.get('userID').touched),
+        'has-success': myform.get('userID').valid && (myform.get('userID').dirty || myform.get('userID').touched)
+      }">
+                <label>User ID</label>
+                <input type="text"
+                       class="form-control"
+                       formControlName="userID">
+                <div class="invalid-feedback"
+                     *ngIf="myform.get('userID').errors && (myform.get('userID').dirty || myform.get('userID').touched)">
+                    <p *ngIf="myform.get('userID').errors.required">User ID is required</p>
+                    <p *ngIf="myform.get('userID').errors.minlength">User ID must be 4 characters long, we need another {{myform.get('userID').errors.minlength.requiredLength - myform.get('userID').errors.minlength.actualLength}} characters</p>
+                </div>
+            </div>
+
+            <div class="form-group" [ngClass]="{
+        'has-error':  myform.get('email').invalid && (myform.get('email').dirty ),
+        'has-success': myform.get('email').valid && (myform.get('email').dirty )
+      }">
+                <label>Email</label>
+                <input type="email"
+                       class="form-control"
+                       formControlName="email">
+                <div class="invalid-feedback"
+                     *ngIf="myform.get('email').errors && (myform.get('email').dirty)">
+                    <p *ngIf="myform.get('email').errors">Invalid email id</p>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Contact</label>
+                <input type="text"
+                       class="form-control"
+                       formControlName="contact">
+            </div>
+
+            <div formGroupName="passGroup"
+                 [ngClass]="{
+        'has-error':  myform.get('passGroup').errors
+      }">
+                <div class="form-group"
+                     [ngClass]="{
+        'has-error': myform.get('passGroup.password').invalid && (myform.get('passGroup.password').dirty || myform.get('passGroup.password').touched),
+        'has-success': myform.get('passGroup.password').valid && (myform.get('passGroup.password').dirty || myform.get('passGroup.password').touched)
+   }">
+                    <label>Password</label>
+                    <input type="password"
+                           class="form-control"
+                           formControlName="password">
+                    <div class="invalid-feedback"
+                         *ngIf="myform.get('passGroup.password').errors && (myform.get('passGroup.password').dirty || myform.get('passGroup.password').touched)">
+                        <p *ngIf="myform.get('passGroup.password').errors.required">Password is required</p>
+                        <p *ngIf="myform.get('passGroup.password').errors.minlength">Password must be 4 characters long, we need another {{myform.get('passGroup.password').errors.minlength.requiredLength - myform.get('passGroup.password').errors.minlength.actualLength}} characters </p>
+                    </div>
+                </div>
+
+                <div class="form-group"
+                     [ngClass]="{
+        'has-error': myform.get('passGroup').errors?.notMatch,
+        'has-success': myform.get('passGroup.password').valid
+   }">
+                    <label>Re-type Password</label>
+                    <input type="password"
+                           class="form-control"
+                           formControlName="rePassword"
+                           required>
+                    <div class="invalid-feedback" *ngIf="myform.get('passGroup').errors?.notMatch">
+                        Password is not matching
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <button class="btn-primary" (click)="insertUpdateUser()">{{actBtnText}}</button>
+                <button class="btn-primary" (click)="ClearForm()">Reset</button>
+                <button class="btn-primary" (click)="DeleteForm()" *ngIf="actBtnText == 'Update'">Delete This User</button>
+            </div>
+            <!--
+              <pre>{{ password.errors | json }}</pre>
+            -->
+            <!--<div class="form-group"
+                 [ngClass]="{
+                'has-error': language.invalid && (language.dirty || language.touched),
+                'has-success': language.valid && (language.dirty || language.touched)
+              }">
+                <label>Language</label>
+                <select class="form-control"
+                        formControlName="language">
+                    <option value="">Please select a language</option>
+                    <option *ngFor="let lang of langs"
+                            [value]="lang">
+                        {{lang}}
+                    </option>
+                </select>
+            </div>-->
+            <!--<pre>{{myform.value | json}}</pre>-->
+        </form>
+    </div>
+</div>

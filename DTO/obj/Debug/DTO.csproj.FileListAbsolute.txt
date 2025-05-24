@@ -1,0 +1,11 @@
+C:\Users\Amrit\source\repos\DTO\bin\Debug\DTO.dll
+C:\Users\Amrit\source\repos\DTO\bin\Debug\DTO.pdb
+C:\Users\Amrit\source\repos\DTO\obj\Debug\DTO.csproj.CoreCompileInputs.cache
+C:\Users\Amrit\source\repos\DTO\obj\Debug\DTO.dll
+C:\Users\Amrit\source\repos\DTO\obj\Debug\DTO.pdb
+C:\D Drive\Development\GitHubRepos\LmsMvcAng\DTO\bin\Debug\DTO.dll
+C:\D Drive\Development\GitHubRepos\LmsMvcAng\DTO\bin\Debug\DTO.pdb
+C:\D Drive\Development\GitHubRepos\LmsMvcAng\DTO\obj\Debug\DTO.csproj.CoreCompileInputs.cache
+C:\D Drive\Development\GitHubRepos\LmsMvcAng\DTO\obj\Debug\DTO.dll
+C:\D Drive\Development\GitHubRepos\LmsMvcAng\DTO\obj\Debug\DTO.pdb
+C:\D Drive\Development\GitHubRepos\LmsMvcAng\DTO\obj\Debug\DTO.csprojResolveAssemblyReference.cache

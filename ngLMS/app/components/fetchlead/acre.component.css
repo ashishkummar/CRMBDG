@@ -1,0 +1,49 @@
+.imgicon {
+    width: 100px;
+    cursor: pointer;
+    margin-right: 30px;
+}
+
+.btn {
+    padding: 3px 12px;
+}
+
+.inputbox{
+    width: 20%;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+.imgiconNotAllowed {
+    width: 100px;
+    -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(100%);
+}
+.notAllowed {
+    width: 100px;
+    cursor: not-allowed;
+    margin-right: 30px;
+}
+p-calendar {
+    margin-right: 5px;
+}
+
+.selection-menu {
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 2px;
+}
+
+    .selection-menu .apiselection {
+        width: 44%;
+        display: inline-flex;
+    }
+
+    .selection-menu .dateselection {
+        width: 100%;
+        display: inline-flex;
+    }
+
+.toolspan {
+    margin-right: 5px;
+    padding-top: 5px;
+}

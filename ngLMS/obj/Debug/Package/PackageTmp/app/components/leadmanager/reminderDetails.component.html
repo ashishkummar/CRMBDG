@@ -1,0 +1,132 @@
+<app-loader [loader]="isLoading"></app-loader>
+<div style="justify-content: center;display: flex;"><p-inputSwitch onLabel="Today" offLabel="All" [(ngModel)]="todayReminder" (onChange)="changeRemData($event)"></p-inputSwitch></div>
+<div>
+    <input type="text" class="form-control" placeholder="Quick search..." (input)="onFilterTextBoxChanged($event.target.value)" />
+</div>
+<div style=" height:calc(100% - 115px)">
+    <ag-grid-angular #agGrid style="width: 100%; height: calc(100% - 5px);" class="ag-theme-blue"
+                     [gridOptions]="gridOptions"
+                     [columnDefs]="columnDefs"
+                     [rowData]="rowData"
+                     [enableFilter]=true
+                     [frameworkComponents]="frameworkComponents"
+                     [rowSelection]="rowSelection"
+                     [enableColResize]="true"
+                     [getRowNodeId]="getRowNodeId"
+                     (rowClicked)="openModal($event)">
+    </ag-grid-angular>
+</div>
+<div class="backdrop" [ngStyle]="{'display':display}"></div>
+
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':display}">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header reqheader">
+                <button type="button" class="close" aria-label="Close" (click)="onCloseHandled()"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Lead Detail</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-5 col-md-5">
+                        <table class="table table-bordered">
+                            <thead>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">Lead Id</th>
+                                    <td>{{selectedLead?.leadID}}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Requestor Name</th>
+                                    <td>{{selectedLead?.leadName}}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Contact Number</th>
+                                    <td>{{selectedLead?.leadContact}}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">e-Mail</th>
+                                    <td>{{selectedLead?.leadEmail}}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Lead Status</th>
+                                    <td>
+                                        <select [(ngModel)]="selectedLead.status.id">
+                                            <option *ngFor="let lang of status"
+                                                    [value]="lang.id">
+                                                {{lang.value}}
+                                            </option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr *ngIf="selectedLead.status.id == 3 || selectedLead.status.id == 6 || selectedLead.status.id == 9">
+                                    <th scope="row">Scheduled on</th>
+                                    <td>
+                                        <p-calendar [(ngModel)]="selectedLead.reminderDate" showTime="true" hourFormat="12" dateFormat="dd/mm/yy" [monthNavigator]="true" [yearNavigator]="true" yearRange="2000:2030"></p-calendar>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Lead Source</th>
+                                    <td>{{selectedLead?.leadSource}}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Lead Type</th>
+                                    <td>{{selectedLead?.leadType}}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Lead Date</th>
+                                    <td>{{selectedLead?.leadEntryDate | date:'medium'}}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Assign Date</th>
+                                    <td>{{selectedLead?.lastUpdatedOn | date:'medium'}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                    <div class="col-lg-7 col-md-7">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr class="reqheader">
+                                    <th scope="row" class="message">Requirement/Query</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>{{selectedLead?.leadQuery}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr class="reqheader">
+                                    <th scope="row" class="message">
+                                        Messages
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="list-group listmsgbox marginremove">
+                                            <div [ngClass]="msg.postedByUID == 1 ? ['list-group-item','list-group-item-action','flex-column','align-items-start','adminmsg']
+                                             :['list-group-item','list-group-item-action','flex-column','align-items-start']"
+                                                 *ngFor="let msg of leadMsg">
+                                                <p class="mb-1">{{msg.message}}</p>
+                                                <small>{{msg.postedBy}} - {{msg.comDate | date:'medium'}}</small>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <textarea class="form-control" placeholder="Post a messge" [(ngModel)]="userMessage"></textarea>
+                        <button class="btn btn-primary" (click)="updateLead()">Update</button>
+                        <button class="btn btn-primary" *ngIf="isAdmin" (click)="updateAllMessages()">Delete All Messages</button>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal !-->

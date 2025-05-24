@@ -1,0 +1,45 @@
+﻿<div class="row" style="overflow-y:auto;">
+    <div class="col-md-12">
+        <form [formGroup]="sendSms" novalidate>
+            <div class="form-group"
+                 [ngClass]="{
+                                'has-error': sendSms.get('mobile').invalid && (sendSms.get('mobile').dirty || sendSms.get('mobile').touched),
+                                'has-success': sendSms.get('mobile').valid && (sendSms.get('mobile').dirty || sendSms.get('mobile').touched)
+                              }">
+                <label>Mobile Number</label>
+                <input type="text"
+                       class="form-control"
+                       formControlName="mobile">
+                <div class="invalid-feedback"
+                     *ngIf="sendSms.get('mobile').errors && (sendSms.get('mobile').dirty || sendSms.get('mobile').touched)">
+                    <div class="invalid-tooltip" *ngIf="sendSms.get('mobile').errors.required">Mobile Number is required</div>
+                    <div class="invalid-tooltip" *ngIf="sendSms.get('mobile').errors.maxlength || sendSms.get('mobile').errors.minlength">Mobile number should be of 10 digit</div>
+                </div>
+            </div>
+
+            <div class="form-group"
+                 [ngClass]="{
+                    'has-error':  sendSms.get('msg').invalid && (sendSms.get('msg').dirty ),
+                    'has-success': sendSms.get('msg').valid && (sendSms.get('msg').dirty )
+                  }">
+                <label>Message text</label>
+                <textarea class="form-control" rows="4" cols="50"
+                          formControlName="msg" #descriptionSms></textarea>
+                <div>{{ descriptionSms.value.length }} characters = {{ this.Math.ceil(descriptionSms.value.length/160) }} SMS will be send.</div>
+                <div class="invalid-feedback" *ngIf="sendSms.get('msg').errors && (sendSms.get('msg').dirty || sendSms.get('msg').touched)">
+                    <p *ngIf="sendSms.get('msg').errors.required">Email id is required</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary" (click)="sendMySms()" [disabled]="!sendSms.valid">Send SMS</button>
+                <button class="btn btn-primary" (click)="getBalance()">Check SMS Balance</button>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="row" *ngIf="smsBal.length > 0">
+    <div class="col-md-12">
+        {{smsBal}}
+        <div>To rechange Login <a href="http://nimbusit.info/login.php" target="_blank">here</a> .</div>
+    </div>
+</div>

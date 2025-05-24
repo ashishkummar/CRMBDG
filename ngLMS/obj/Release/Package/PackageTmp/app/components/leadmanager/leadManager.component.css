@@ -1,0 +1,51 @@
+.backdrop {
+    background-color: rgba(0,0,0,0.6);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+}
+.listmsgbox {
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+/*.modal-lg {
+    width: calc(100% - 100px);
+    height: calc(100% - 100px);
+}*/
+
+.adminmsg {
+    background-color: #ff0101;
+    color: #fff;
+}
+.reqheader {
+    background-color: #5e9cd3;
+    color: #fff;
+    padding:5px;
+    padding-left:20px;
+    
+}
+
+    .reqheader .message {
+        padding:3px;
+    }
+
+.marginremove{
+    margin-bottom:0px;
+}
+
+.gridCustomToolbar {
+    display: flex;
+    justify-content: flex-end;
+   
+}
+
+    .gridCustomToolbar .toolspan {
+        line-height: 23px;
+        padding: 3px;
+    }
+.btn {
+    padding: 3px 12px;
+}

@@ -1,0 +1,49 @@
+<div class="text-center">
+    <a [routerLink]="['/home/magicbricks']"><img src="./img/magic.png" class="rounded imgicon imgiconNotAllowed" alt="Magic Bricks"></a>
+    <img src="./img/99acre.png" class="rounded  notAllowed" alt="99Acres">
+    <a [routerLink]="['/home/housing']"><img src="./img/housingLogo.png" class="rounded imgicon imgiconNotAllowed" style="background-color:#2822ca" alt="Housing"></a>
+    <span style="position: fixed;right: 5px;">{{LastFetchMsg}}</span>
+</div>
+<hr />
+<p-growl [(value)]="popMsg"></p-growl>
+<app-loader [loader]="isLoading"></app-loader>
+<div class="selection-menu">
+
+    <div class="dateselection">
+        <span class="toolspan">Pack User Name</span>
+        <input type="text" class="form-control inputbox" [(ngModel)]="apiUserID" />
+        <span class="toolspan">Password</span>
+        <input type="text" class="form-control inputbox" [(ngModel)]="apiPassword" />
+        <span class="toolspan">Get record from</span>
+        <p-calendar [(ngModel)]="searchFromDt" dateFormat="dd/mm/yy" [monthNavigator]="true" [yearNavigator]="true" yearRange="2000:2030"></p-calendar>
+        <span class="toolspan">To</span>
+        <p-calendar [(ngModel)]="searchToDt" dateFormat="dd/mm/yy" [maxDate]="maxDate" [monthNavigator]="true" [yearNavigator]="true" yearRange="2000:2030"></p-calendar>
+        <button class="btn btn-primary" (click)="fetchLead()" style="margin-right: 5px;">GO</button>
+        <button class="btn btn-primary" *ngIf="rowData.length>0" (click)="saveToDB()" style="margin-right: 5px;">Save To DB</button>
+        <button class="btn btn-primary" *ngIf="gridApi?.getSelectedRows().length>0" (click)="deleteSelection()" style="margin-right: 5px;">Delete</button>
+    </div>
+</div>
+<div style=" height:calc(100% - 170px);width:100%">
+    <ag-grid-angular #agGrid style="width: 100%; height: calc(100% - 25px);" class="ag-theme-blue"
+                     [gridOptions]="gridOptions"
+                     [columnDefs]="columnDefs"
+                     [rowData]="rowData"
+                     [enableFilter]=true
+                     [enableSorting]="true"
+                     [frameworkComponents]="frameworkComponents"
+                     [rowSelection]="rowSelection"
+                     [enableColResize]="true"
+                     [getRowNodeId]="getRowNodeId">
+    </ag-grid-angular>
+</div>
+
+
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayProgress}">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <p-progressBar [value]="progressPer"></p-progressBar>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal !-->

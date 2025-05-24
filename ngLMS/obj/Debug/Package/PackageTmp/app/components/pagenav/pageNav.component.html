@@ -1,0 +1,46 @@
+﻿<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header" style="display:flex;">
+            <div style="width:20%">
+                <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn" (click)="toggleclick()">
+                    <i class="glyphicon glyphicon-align-left"></i>
+                </button>
+            </div>
+            <div class="pageTitle">
+                <h4>{{pagetitle}}</h4>
+            </div>
+            <div class="rightpanel">
+                <div title="Reminder" (click)="ReminderClicked()">
+                    <a class="pageutil"><i class="fa fa-bell"><span class="badge" style="background-color:#fc0000;position: relative;left: -6px;">{{ReminderCount}}</span></i></a>
+                </div>
+                <div title="Logout" (click)="logout()">
+                    <span class="userName">Hello, {{appUser}}</span>
+                    <a class="logoutbtn"><i class="glyphicon glyphicon-off"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+<p-sidebar [(visible)]="showReminderMsg" position="bottom" [baseZIndex]="10000" (onHide)="remiderClosed()" styleClass="ui-sidebar-lg">
+    <div style="color: red;">Reminder Alert !</div>
+    <div style="overflow-y:scroll;height:100%;">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Lead ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Contact</th>
+                    <th scope="col">Schedule On</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let rem of remMsg">
+                    <th>{{rem.leadID}}</th>
+                    <td>{{rem.leadName}}</td>
+                    <td>{{rem.leadContact}}</td>
+                    <td>{{rem.reminderDate | date:'medium'}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</p-sidebar>

@@ -1,0 +1,1323 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.2.4.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.2.4.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C8C1A706-5838-4864-B4BB-E8BF4E083470}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ngLMS</RootNamespace>
+    <AssemblyName>ngLMS</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>2.6</TypeScriptToolsVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="HtmlRenderer, Version=1.5.0.5, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlRenderer.Core.1.5.0.5\lib\net45\HtmlRenderer.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlRenderer.PdfSharp, Version=1.5.0.6, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlRenderer.PdfSharp.1.5.0.6\lib\net45\HtmlRenderer.PdfSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.4.0.0\lib\net451\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Cors, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Cors.4.0.0\lib\net451\Microsoft.Owin.Cors.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.4.0.0\lib\net451\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.4.0.0\lib\net451\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.4.0.0\lib\net451\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="MigraDoc.DocumentObjectModel, Version=1.32.4334.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\PDFsharp-MigraDoc-GDI.1.32.4334.0\lib\net20\MigraDoc.DocumentObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="MigraDoc.Rendering, Version=1.32.4334.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\PDFsharp-MigraDoc-GDI.1.32.4334.0\lib\net20\MigraDoc.Rendering.dll</HintPath>
+    </Reference>
+    <Reference Include="MigraDoc.RtfRendering, Version=1.32.4334.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\PDFsharp-MigraDoc-GDI.1.32.4334.0\lib\net20\MigraDoc.RtfRendering.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="PdfSharp, Version=1.32.3057.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\PDFsharp-MigraDoc-GDI.1.32.4334.0\lib\net20\PdfSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="PdfSharp.Charting, Version=1.32.3057.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\PDFsharp-MigraDoc-GDI.1.32.4334.0\lib\net20\PdfSharp.Charting.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Web.Cors, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Cors.5.0.0\lib\net45\System.Web.Cors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Unity.Abstractions, Version=3.3.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.Abstractions.3.3.0\lib\net45\Unity.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.AspNet.WebApi, Version=5.0.13.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.AspNet.WebApi.5.0.13\lib\net46\Unity.AspNet.WebApi.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Container, Version=5.7.0.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.Container.5.7.0\lib\net46\Unity.Container.dll</HintPath>
+    </Reference>
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebActivatorEx.2.2.0\lib\net40\WebActivatorEx.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Net.Http.Formatting">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.2.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Agent.Intercept">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.0.6\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.2.0\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.2.0\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.2.0\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.2.0\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.2.0\lib\net45\Microsoft.AI.Web.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\Authorization.cs" />
+    <Compile Include="App_Start\AuthorizeAttribute.cs" />
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\EmailController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LeadController.cs" />
+    <Compile Include="Controllers\PrivCustomerController.cs" />
+    <Compile Include="Controllers\ProjectController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="PdfGenerator\MigraGenerator.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="app\components\alert\alert.component.css" />
+    <Content Include="app\components\alert\alert.component.html" />
+    <Content Include="app\components\app\app.component.css" />
+    <Content Include="app\components\app\app.component.html" />
+    <Content Include="app\components\archive\archive.component.css" />
+    <Content Include="app\components\archive\archive.component.html" />
+    <Content Include="app\components\createuser\createuser.component.css" />
+    <Content Include="app\components\createuser\createuser.component.html" />
+    <Content Include="app\components\email\bulkEmail.component.css" />
+    <Content Include="app\components\email\bulkEmail.component.html" />
+    <Content Include="app\components\email\email.component.css" />
+    <Content Include="app\components\fetchlead\acre.component.css" />
+    <Content Include="app\components\fetchlead\acre.component.html" />
+    <Content Include="app\components\fetchlead\housing.component.css" />
+    <Content Include="app\components\fetchlead\housing.component.html" />
+    <Content Include="app\components\fetchlead\csv.component.css" />
+    <Content Include="app\components\fetchlead\csv.component.html" />
+    <Content Include="app\components\login\img\bd1.jpg" />
+    <Content Include="app\components\login\img\male.jpg" />
+    <Content Include="app\components\privcustomer\createCust.component.css" />
+    <Content Include="app\components\privcustomer\createCust.component.html" />
+    <Content Include="app\components\privcustomer\privcustomer.component.css" />
+    <Content Include="app\components\privcustomer\privcustomer.component.html" />
+    <Content Include="app\components\project\createProject.component.css" />
+    <Content Include="app\components\project\createProject.component.html" />
+    <Content Include="app\components\project\project.component.css" />
+    <Content Include="app\components\project\project.component.html" />
+    <Content Include="app\components\sms\sendSms.component.css" />
+    <Content Include="app\components\sms\sendSms.component.html" />
+    <Content Include="gulpfile.js" />
+    <Content Include="img\99acre.PNG" />
+    <Content Include="img\csv.png" />
+    <Content Include="img\HeaderLogo.png" />
+    <Content Include="img\housingLogo.png" />
+    <Content Include="img\male.jpg" />
+    <Content Include="img\magic.png" />
+    <Content Include="app\components\fetchlead\magic.component.css" />
+    <Content Include="app\components\fetchlead\magic.component.html" />
+    <Content Include="app\components\headBar\headBar.component.css" />
+    <Content Include="app\components\headBar\headBar.component.html" />
+    <Content Include="app\components\home\home.component.html" />
+    <Content Include="app\components\leadmanager\createLead.component.css" />
+    <Content Include="app\components\leadmanager\createLead.component.html" />
+    <Content Include="app\components\leadmanager\leadManager.component.css" />
+    <Content Include="app\components\leadmanager\leadManager.component.html" />
+    <Content Include="app\components\leadmanager\reminderDetails.component.css" />
+    <Content Include="app\components\leadmanager\reminderDetails.component.html" />
+    <Content Include="app\components\loader\loader.component.css" />
+    <Content Include="app\components\loader\loader.component.html" />
+    <Content Include="img\bd1.jpg" />
+    <Content Include="img\bg.jpg" />
+    <Content Include="img\male1.jpg" />
+    <Content Include="app\components\login\login.component.css" />
+    <Content Include="app\components\login\login.component.html" />
+    <Content Include="app\components\navmenu\navmenu.component.css" />
+    <Content Include="app\components\navmenu\navmenu.component.html" />
+    <Content Include="app\components\pagenav\pageNav.component.css" />
+    <Content Include="app\components\pagenav\pageNav.component.html" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="img\underCons.png" />
+    <Content Include="node_modules\ag-grid-angular\agGridPropertiesCheck.js" />
+    <Content Include="node_modules\ag-grid-angular\dist\agFrameworkComponent.js" />
+    <Content Include="node_modules\ag-grid-angular\dist\aggrid.module.js" />
+    <Content Include="node_modules\ag-grid-angular\dist\aggrid.module.ngfactory.js" />
+    <Content Include="node_modules\ag-grid-angular\dist\agGridColumn.js" />
+    <Content Include="node_modules\ag-grid-angular\dist\agGridColumn.ngfactory.js" />
+    <Content Include="node_modules\ag-grid-angular\dist\agGridNg2.js" />
+    <Content Include="node_modules\ag-grid-angular\dist\agGridNg2.ngfactory.js" />
+    <Content Include="node_modules\ag-grid-angular\dist\baseComponentFactory.js" />
+    <Content Include="node_modules\ag-grid-angular\dist\interfaces.js" />
+    <Content Include="node_modules\ag-grid-angular\dist\ng2ComponentFactory.js" />
+    <Content Include="node_modules\ag-grid-angular\dist\ng2FrameworkComponentWrapper.js" />
+    <Content Include="node_modules\ag-grid-angular\dist\ng2FrameworkFactory.js" />
+    <Content Include="node_modules\ag-grid-angular\gulp-tasks\clean-nm-ag-grid-enterprise.js" />
+    <Content Include="node_modules\ag-grid-angular\gulp-tasks\clean-nm-ag-grid.js" />
+    <Content Include="node_modules\ag-grid-angular\gulp-tasks\copy-from-ag-grid-enterprise.js" />
+    <Content Include="node_modules\ag-grid-angular\gulp-tasks\copy-from-ag-grid.js" />
+    <Content Include="node_modules\ag-grid-angular\gulpfile.js" />
+    <Content Include="node_modules\ag-grid-angular\LICENSE.txt" />
+    <Content Include="node_modules\ag-grid-angular\main.js" />
+    <Content Include="node_modules\ag-grid-angular\updateGridAndColumnProperties.js" />
+    <Content Include="node_modules\ag-grid\dist\ag-grid.js" />
+    <Content Include="node_modules\ag-grid\dist\ag-grid.min.js" />
+    <Content Include="node_modules\ag-grid\dist\ag-grid.min.noStyle.js" />
+    <Content Include="node_modules\ag-grid\dist\ag-grid.noStyle.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\alignedGridsService.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\baseFrameworkFactory.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\cellNavigationService.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\columnController\autoGroupColService.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\columnController\balancedColumnTreeBuilder.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\columnController\columnApi.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\columnController\columnController.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\columnController\columnKeyCreator.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\columnController\columnUtils.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\columnController\displayedGroupCreator.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\columnController\groupInstanceIdCreator.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\components\agGridNg1.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\components\agGridWebComponent.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\components\colDefUtil.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\components\componentUtil.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\components\framework\agComponentUtils.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\components\framework\componentMetadataProvider.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\components\framework\componentProvider.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\components\framework\componentRecipes.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\components\framework\componentResolver.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\components\framework\frameworkComponentWrapper.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\constants.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\context\beanStub.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\context\context.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\csvCreator.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\downloader.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\dragAndDrop\dragAndDropService.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\dragAndDrop\dragService.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\entities\colDef.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\entities\column.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\entities\columnGroup.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\entities\columnGroupChild.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\entities\defaultColumnTypes.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\entities\gridCell.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\entities\gridOptions.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\entities\gridRow.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\entities\originalColumnGroup.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\entities\originalColumnGroupChild.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\entities\rowNode.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\environment.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\eventKeys.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\events.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\eventService.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\exportParams.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\filter\baseFilter.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\filter\dateFilter.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\filter\filter.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\filter\filterManager.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\filter\floatingFilter.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\filter\floatingFilterWrapper.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\filter\numberFilter.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\filter\textAndNumberFilterParameters.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\filter\textFilter.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\focusedCellController.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\functions.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\grid.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\gridApi.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\gridCore.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\gridOptionsWrapper.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\gridPanel\gridPanel.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\gridPanel\mouseEventService.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\gridPanel\navigationService.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\gridPanel\rowDragFeature.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\gridPanel\scrollVisibleService.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\gridSerializer.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\headerRendering\bodyDropPivotTarget.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\headerRendering\bodyDropTarget.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\headerRendering\cssClassApplier.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\headerRendering\headerContainer.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\headerRendering\headerGroup\headerGroupComp.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\headerRendering\headerGroup\headerGroupWrapperComp.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\headerRendering\headerRenderer.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\headerRendering\headerRowComp.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\headerRendering\header\headerComp.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\headerRendering\header\headerWrapperComp.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\headerRendering\header\selectAllFeature.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\headerRendering\horizontalResizeService.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\headerRendering\hoverFeature.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\headerRendering\moveColumnController.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\headerRendering\standardMenu.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\iLogger.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\interfaces\iAggFuncService.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\interfaces\iClipboardService.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\interfaces\iCompFactory.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\interfaces\iComponent.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\interfaces\iContextMenuFactory.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\interfaces\iEnterpriseCache.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\interfaces\iEnterpriseDatasource.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\interfaces\iEnterpriseRowModel.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\interfaces\iEventEmitter.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\interfaces\iExcelCreator.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\interfaces\iFilter.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\interfaces\iFrameworkFactory.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\interfaces\iMenu.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\interfaces\iMenuFactory.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\interfaces\iRangeController.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\interfaces\iRichCellEditorParams.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\interfaces\iRowModel.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\interfaces\iRowNodeStage.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\interfaces\iSerializedSetFilter.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\interfaces\iSetFilterParams.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\interfaces\iToolPanel.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\interfaces\iViewportDatasource.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\layout\borderLayout.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\layout\tabbedLayout.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\layout\verticalStack.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\logger.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\misc\animationFrameService.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\misc\linkedList.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\misc\simpleHttpRequest.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\propertyKeys.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\rendering\autoHeightCalculator.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\rendering\autoWidthCalculator.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\rendering\beans.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\rendering\cellComp.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\rendering\cellEditorFactory.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\rendering\cellEditors\iCellEditor.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\rendering\cellEditors\largeTextCellEditor.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\rendering\cellEditors\popupEditorWrapper.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\rendering\cellEditors\popupSelectCellEditor.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\rendering\cellEditors\popupTextCellEditor.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\rendering\cellEditors\selectCellEditor.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\rendering\cellEditors\textCellEditor.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\rendering\cellRendererFactory.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\rendering\cellRendererService.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\rendering\cellRenderers\animateShowChangeCellRenderer.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\rendering\cellRenderers\animateSlideCellRenderer.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\rendering\cellRenderers\groupCellRenderer.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\rendering\cellRenderers\iCellRenderer.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\rendering\checkboxSelectionComponent.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\rendering\columnAnimationService.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\rendering\columnHoverService.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\rendering\dateComponent.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\rendering\features\setLeftFeature.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\rendering\heightScaler.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\rendering\overlays\loadingOverlayComponent.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\rendering\overlays\noRowsOverlayComponent.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\rendering\overlays\overlayWrapperComponent.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\rendering\rowComp.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\rendering\rowContainerComponent.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\rendering\rowDragComp.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\rendering\rowRenderer.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\rendering\valueFormatterService.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\rowModels\cache\rowNodeBlock.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\rowModels\cache\rowNodeBlockLoader.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\rowModels\cache\rowNodeCache.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\rowModels\iDatasource.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\rowModels\infinite\infiniteBlock.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\rowModels\infinite\infiniteCache.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\rowModels\infinite\infiniteRowModel.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\rowModels\inMemory\changedPath.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\rowModels\inMemory\filterStage.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\rowModels\inMemory\flattenStage.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\rowModels\inMemory\immutableService.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\rowModels\inMemory\inMemoryNodeManager.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\rowModels\inMemory\inMemoryRowModel.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\rowModels\inMemory\sortStage.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\rowModels\paginationProxy.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\rowModels\pagination\paginationComp.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\rowModels\pinnedRowModel.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\rowNodes\filterService.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\rowNodes\rowNodeFactory.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\rowNodes\selectableService.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\rowNodes\sortService.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\selectionController.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\sortController.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\styling\stylingService.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\templateService.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\utils.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\valueService\changeDetectionService.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\valueService\expressionService.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\valueService\valueCache.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\valueService\valueService.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\widgets\agCheckbox.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\widgets\component.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\widgets\componentAnnotations.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\widgets\popupService.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\widgets\testingSandbox.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\widgets\touchListener.js" />
+    <Content Include="node_modules\ag-grid\dist\lib\xmlFactory.js" />
+    <Content Include="node_modules\ag-grid\dist\styles\ag-grid.css" />
+    <Content Include="node_modules\ag-grid\dist\styles\ag-theme-balham-dark.css" />
+    <Content Include="node_modules\ag-grid\dist\styles\ag-theme-balham.css" />
+    <Content Include="node_modules\ag-grid\dist\styles\ag-theme-blue.css" />
+    <Content Include="node_modules\ag-grid\dist\styles\ag-theme-bootstrap.css" />
+    <Content Include="node_modules\ag-grid\dist\styles\ag-theme-dark.css" />
+    <Content Include="node_modules\ag-grid\dist\styles\ag-theme-fresh.css" />
+    <Content Include="node_modules\ag-grid\dist\styles\ag-theme-material.css" />
+    <Content Include="node_modules\ag-grid\dist\styles\compiled-icons.css" />
+    <Content Include="node_modules\ag-grid\dist\styles\theme-blue.css" />
+    <Content Include="node_modules\ag-grid\dist\styles\theme-bootstrap.css" />
+    <Content Include="node_modules\ag-grid\dist\styles\theme-dark.css" />
+    <Content Include="node_modules\ag-grid\dist\styles\theme-fresh.css" />
+    <Content Include="node_modules\ag-grid\dist\styles\theme-material.css" />
+    <Content Include="node_modules\ag-grid\gulpfile.js" />
+    <Content Include="node_modules\ag-grid\jspm-main.js" />
+    <Content Include="node_modules\ag-grid\LICENSE.txt" />
+    <Content Include="node_modules\ag-grid\main-with-styles.js" />
+    <Content Include="node_modules\ag-grid\main.js" />
+    <Content Include="node_modules\ag-grid\notes.txt" />
+    <Content Include="node_modules\ag-grid\spec\columnController\columnControllerTest.js" />
+    <Content Include="node_modules\ag-grid\spec\sample.js" />
+    <Content Include="node_modules\ag-grid\src\styles\balham-icons\aggregation.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\balham-icons\arrows.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\balham-icons\asc.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\balham-icons\cancel.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\balham-icons\checkbox-checked-readonly.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\balham-icons\checkbox-checked.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\balham-icons\checkbox-indeterminate-readonly.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\balham-icons\checkbox-indeterminate.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\balham-icons\checkbox-unchecked-readonly.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\balham-icons\checkbox-unchecked.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\balham-icons\column.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\balham-icons\columns.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\balham-icons\contracted.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\balham-icons\copy.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\balham-icons\cross.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\balham-icons\cut.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\balham-icons\desc.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\balham-icons\expanded.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\balham-icons\eye-slash.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\balham-icons\eye.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\balham-icons\filter.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\balham-icons\first.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\balham-icons\grip.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\balham-icons\group.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\balham-icons\indeterminate.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\balham-icons\last.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\balham-icons\left.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\balham-icons\loading.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\balham-icons\menu.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\balham-icons\minus.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\balham-icons\next.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\balham-icons\none.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\balham-icons\not-allowed.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\balham-icons\paste.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\balham-icons\pin.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\balham-icons\pivot.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\balham-icons\plus.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\balham-icons\previous.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\balham-icons\right.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\balham-icons\small-down.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\balham-icons\small-left.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\balham-icons\small-right.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\balham-icons\small-up.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\balham-icons\tick.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\balham-icons\tree-closed.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\balham-icons\tree-indeterminate.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\balham-icons\tree-open.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\entry.js" />
+    <Content Include="node_modules\ag-grid\src\styles\icons\aggregation.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\icons\arrows.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\icons\asc.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\icons\cancel.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\icons\checkbox-checked-readonly.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\icons\checkbox-checked.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\icons\checkbox-indeterminate-readonly.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\icons\checkbox-indeterminate.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\icons\checkbox-unchecked-readonly.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\icons\checkbox-unchecked.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\icons\column.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\icons\columns.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\icons\contracted.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\icons\copy.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\icons\cross.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\icons\cut.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\icons\desc.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\icons\expanded.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\icons\eye-slash.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\icons\eye.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\icons\filter.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\icons\first.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\icons\folder-open.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\icons\folder.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\icons\grip.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\icons\group.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\icons\indeterminate.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\icons\last.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\icons\left.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\icons\loading.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\icons\menu.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\icons\minus.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\icons\next.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\icons\none.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\icons\not-allowed.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\icons\paste.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\icons\pin.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\icons\pivot.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\icons\plus.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\icons\previous.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\icons\right.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\icons\small-down.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\icons\small-left.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\icons\small-right.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\icons\small-up.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\icons\star.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\icons\tick.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\icons\tree-closed.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\icons\tree-indeterminate.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\icons\tree-open.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\legacy\arrows.png" />
+    <Content Include="node_modules\ag-grid\src\styles\legacy\checkbox-checked.png" />
+    <Content Include="node_modules\ag-grid\src\styles\legacy\checkbox-indeterminate.png" />
+    <Content Include="node_modules\ag-grid\src\styles\legacy\checkbox-readonly-checked.png" />
+    <Content Include="node_modules\ag-grid\src\styles\legacy\checkbox-readonly-indeterminate.png" />
+    <Content Include="node_modules\ag-grid\src\styles\legacy\checkbox-readonly.png" />
+    <Content Include="node_modules\ag-grid\src\styles\legacy\checkbox.png" />
+    <Content Include="node_modules\ag-grid\src\styles\legacy\column.png" />
+    <Content Include="node_modules\ag-grid\src\styles\legacy\columns.png" />
+    <Content Include="node_modules\ag-grid\src\styles\legacy\contracted.png" />
+    <Content Include="node_modules\ag-grid\src\styles\legacy\copy.png" />
+    <Content Include="node_modules\ag-grid\src\styles\legacy\cut.png" />
+    <Content Include="node_modules\ag-grid\src\styles\legacy\expanded.png" />
+    <Content Include="node_modules\ag-grid\src\styles\legacy\folder-open.png" />
+    <Content Include="node_modules\ag-grid\src\styles\legacy\folder.png" />
+    <Content Include="node_modules\ag-grid\src\styles\legacy\group.png" />
+    <Content Include="node_modules\ag-grid\src\styles\legacy\hidden.png" />
+    <Content Include="node_modules\ag-grid\src\styles\legacy\indeterminate.png" />
+    <Content Include="node_modules\ag-grid\src\styles\legacy\left.png" />
+    <Content Include="node_modules\ag-grid\src\styles\legacy\loading.png" />
+    <Content Include="node_modules\ag-grid\src\styles\legacy\menu.png" />
+    <Content Include="node_modules\ag-grid\src\styles\legacy\minus.png" />
+    <Content Include="node_modules\ag-grid\src\styles\legacy\not-allowed.png" />
+    <Content Include="node_modules\ag-grid\src\styles\legacy\paste.png" />
+    <Content Include="node_modules\ag-grid\src\styles\legacy\pin.png" />
+    <Content Include="node_modules\ag-grid\src\styles\legacy\pivot.png" />
+    <Content Include="node_modules\ag-grid\src\styles\legacy\plus.png" />
+    <Content Include="node_modules\ag-grid\src\styles\legacy\right.png" />
+    <Content Include="node_modules\ag-grid\src\styles\legacy\sum.png" />
+    <Content Include="node_modules\ag-grid\src\styles\legacy\visible.png" />
+    <Content Include="node_modules\ag-grid\src\styles\material-icons\ag.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\material-icons\aggregation.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\material-icons\arrows.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\material-icons\asc.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\material-icons\cancel.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\material-icons\checkbox-checked-readonly.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\material-icons\checkbox-checked.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\material-icons\checkbox-indeterminate-readonly.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\material-icons\checkbox-indeterminate.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\material-icons\checkbox-unchecked-readonly.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\material-icons\checkbox-unchecked.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\material-icons\column.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\material-icons\columns.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\material-icons\contracted.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\material-icons\copy.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\material-icons\cross.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\material-icons\cut.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\material-icons\desc.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\material-icons\expanded.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\material-icons\eye-slash.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\material-icons\eye.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\material-icons\filter.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\material-icons\first.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\material-icons\grip.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\material-icons\group.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\material-icons\indeterminate.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\material-icons\last.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\material-icons\left.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\material-icons\loading.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\material-icons\menu.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\material-icons\minus.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\material-icons\next.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\material-icons\none.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\material-icons\not-allowed.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\material-icons\paste.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\material-icons\pin.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\material-icons\pivot.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\material-icons\plus.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\material-icons\previous.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\material-icons\right.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\material-icons\small-down.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\material-icons\small-left.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\material-icons\small-right.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\material-icons\small-up.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\material-icons\tick.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\material-icons\tree-closed.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\material-icons\tree-indeterminate.svg" />
+    <Content Include="node_modules\ag-grid\src\styles\material-icons\tree-open.svg" />
+    <Content Include="node_modules\ag-grid\webpack.config.js" />
+    <Content Include="node_modules\gulp-angular4-embedfromurl\index.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="package.json" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="node_modules\ag-grid\.github\ISSUE_TEMPLATE.md" />
+    <Content Include="node_modules\ag-grid\.npmignore" />
+    <Content Include="node_modules\ag-grid\.prettierrc" />
+    <Content Include="node_modules\ag-grid\.sasslintrc" />
+    <Content Include="node_modules\ag-grid\.travis.yml" />
+    <Content Include="node_modules\ag-grid\bower.json" />
+    <Content Include="node_modules\ag-grid\CONTRIBUTING.md" />
+    <Content Include="node_modules\ag-grid\module.tgz" />
+    <Content Include="node_modules\ag-grid\package.json" />
+    <Content Include="node_modules\ag-grid\README.md" />
+    <Content Include="node_modules\ag-grid\src\styles\ag-grid.scss" />
+    <Content Include="node_modules\ag-grid\src\styles\ag-theme-balham-dark.scss" />
+    <Content Include="node_modules\ag-grid\src\styles\ag-theme-balham.scss" />
+    <Content Include="node_modules\ag-grid\src\styles\ag-theme-blue.scss" />
+    <Content Include="node_modules\ag-grid\src\styles\ag-theme-bootstrap.scss" />
+    <Content Include="node_modules\ag-grid\src\styles\ag-theme-dark.scss" />
+    <Content Include="node_modules\ag-grid\src\styles\ag-theme-fresh.scss" />
+    <Content Include="node_modules\ag-grid\src\styles\ag-theme-material.scss" />
+    <Content Include="node_modules\ag-grid\src\styles\compiled-icons.scss" />
+    <Content Include="node_modules\ag-grid\src\styles\converter\convert.sh" />
+    <Content Include="node_modules\ag-grid\src\styles\converter\stylus2sass.sed" />
+    <Content Include="node_modules\ag-grid\src\styles\theme-blue.scss" />
+    <Content Include="node_modules\ag-grid\src\styles\theme-bootstrap.scss" />
+    <Content Include="node_modules\ag-grid\src\styles\theme-dark.scss" />
+    <Content Include="node_modules\ag-grid\src\styles\theme-fresh.scss" />
+    <Content Include="node_modules\ag-grid\src\styles\theme-material.scss" />
+    <Content Include="node_modules\ag-grid\src\styles\_ag-theme-balham-common.scss" />
+    <Content Include="node_modules\ag-grid\src\styles\_ag-theme-balham-vars.scss" />
+    <Content Include="node_modules\ag-grid\src\styles\_ag-theme-classic-common.scss" />
+    <Content Include="node_modules\ag-grid\src\styles\_ag-theme-classic-vars.scss" />
+    <Content Include="node_modules\ag-grid\src\styles\_ag-theme-common.scss" />
+    <Content Include="node_modules\ag-grid\src\styles\_flat-colors.scss" />
+    <Content Include="node_modules\ag-grid\src\styles\_material-legacy-var-names.scss" />
+    <Content Include="node_modules\ag-grid\src\styles\_theme-common.scss" />
+    <Content Include="node_modules\ag-grid\tsconfig-exports.json" />
+    <Content Include="node_modules\ag-grid\tsconfig.json" />
+    <Content Include="node_modules\ag-grid\tslint-fix.json" />
+    <Content Include="node_modules\ag-grid\tslint.json" />
+    <Content Include="node_modules\ag-grid-angular\.github\ISSUE_TEMPLATE.md" />
+    <Content Include="node_modules\ag-grid-angular\.npmignore" />
+    <Content Include="node_modules\ag-grid-angular\bower.json" />
+    <Content Include="node_modules\ag-grid-angular\CONTRIBUTING.md" />
+    <Content Include="node_modules\ag-grid-angular\dist\agFrameworkComponent.js.map" />
+    <Content Include="node_modules\ag-grid-angular\dist\aggrid.module.js.map" />
+    <Content Include="node_modules\ag-grid-angular\dist\aggrid.module.metadata.json" />
+    <Content Include="node_modules\ag-grid-angular\dist\aggrid.module.ngfactory.js.map" />
+    <Content Include="node_modules\ag-grid-angular\dist\agGridColumn.js.map" />
+    <Content Include="node_modules\ag-grid-angular\dist\agGridColumn.metadata.json" />
+    <Content Include="node_modules\ag-grid-angular\dist\agGridColumn.ngfactory.js.map" />
+    <Content Include="node_modules\ag-grid-angular\dist\agGridNg2.js.map" />
+    <Content Include="node_modules\ag-grid-angular\dist\agGridNg2.metadata.json" />
+    <Content Include="node_modules\ag-grid-angular\dist\agGridNg2.ngfactory.js.map" />
+    <Content Include="node_modules\ag-grid-angular\dist\baseComponentFactory.js.map" />
+    <Content Include="node_modules\ag-grid-angular\dist\baseComponentFactory.metadata.json" />
+    <Content Include="node_modules\ag-grid-angular\dist\interfaces.js.map" />
+    <Content Include="node_modules\ag-grid-angular\dist\interfaces.metadata.json" />
+    <Content Include="node_modules\ag-grid-angular\dist\ng2ComponentFactory.js.map" />
+    <Content Include="node_modules\ag-grid-angular\dist\ng2ComponentFactory.metadata.json" />
+    <Content Include="node_modules\ag-grid-angular\dist\ng2FrameworkComponentWrapper.js.map" />
+    <Content Include="node_modules\ag-grid-angular\dist\ng2FrameworkComponentWrapper.metadata.json" />
+    <Content Include="node_modules\ag-grid-angular\dist\ng2FrameworkFactory.js.map" />
+    <Content Include="node_modules\ag-grid-angular\dist\ng2FrameworkFactory.metadata.json" />
+    <Content Include="node_modules\ag-grid-angular\main.js.map" />
+    <Content Include="node_modules\ag-grid-angular\main.metadata.json" />
+    <Content Include="node_modules\ag-grid-angular\module.tgz" />
+    <Content Include="node_modules\ag-grid-angular\package.json" />
+    <Content Include="node_modules\ag-grid-angular\README.md" />
+    <Content Include="node_modules\ag-grid-angular\tsconfig-gulp.json" />
+    <Content Include="node_modules\ag-grid-angular\tsconfig-main.json" />
+    <Content Include="node_modules\ag-grid-angular\tsconfig-src.json" />
+    <Content Include="app\components\email\email.component.html" />
+    <Content Include="node_modules\gulp-angular4-embedfromurl\package.json" />
+    <Content Include="node_modules\gulp-angular4-embedfromurl\README.md" />
+    <Content Include="ProjectFiles\LeadSampleFile.csv" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="systemjs-angular-loader.js" />
+    <Content Include="systemjs.config.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="tsconfig.json" />
+    <None Include="Views\Shared\_Layout-prod.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="app\components\fetchlead\img\" />
+    <Folder Include="App_Data\" />
+    <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="app\app.browser.module.ts" />
+    <TypeScriptCompile Include="app\app.shared.module.ts" />
+    <TypeScriptCompile Include="app\authGaurd\auth.service.ts" />
+    <TypeScriptCompile Include="app\authGaurd\authGuard.ts" />
+    <TypeScriptCompile Include="app\authGaurd\index.ts" />
+    <TypeScriptCompile Include="app\components\alert\alert.component.ts" />
+    <TypeScriptCompile Include="app\components\app\app.component.ts" />
+    <TypeScriptCompile Include="app\components\archive\archive.component.ts" />
+    <TypeScriptCompile Include="app\components\createuser\createuser.component.ts" />
+    <TypeScriptCompile Include="app\components\createuser\IUser.ts" />
+    <TypeScriptCompile Include="app\components\email\bulkEmail.component.ts" />
+    <TypeScriptCompile Include="app\components\email\email.component.ts" />
+    <TypeScriptCompile Include="app\components\fetchlead\acre.component.ts" />
+    <TypeScriptCompile Include="app\components\fetchlead\housing.component.ts" />
+    <TypeScriptCompile Include="app\components\fetchlead\csv.component.ts" />
+    <TypeScriptCompile Include="app\components\fetchlead\magic.component.ts" />
+    <TypeScriptCompile Include="app\components\grid\communicationCellrendrer.component.ts" />
+    <TypeScriptCompile Include="app\components\grid\entryDateCellrendrer.component.ts" />
+    <TypeScriptCompile Include="app\components\grid\recentQueryCellrendrer.component.ts" />
+    <TypeScriptCompile Include="app\components\headBar\headBar.component.ts" />
+    <TypeScriptCompile Include="app\components\home\home.component.ts" />
+    <TypeScriptCompile Include="app\components\index.ts" />
+    <TypeScriptCompile Include="app\components\leadmanager\createLead.component.ts" />
+    <TypeScriptCompile Include="app\components\leadmanager\ILead.ts" />
+    <TypeScriptCompile Include="app\components\leadmanager\LeadConfig.ts" />
+    <TypeScriptCompile Include="app\components\leadmanager\leadManager.component.ts" />
+    <TypeScriptCompile Include="app\components\leadmanager\reminderDetails.component.ts" />
+    <TypeScriptCompile Include="app\components\loader\loader.component.ts" />
+    <TypeScriptCompile Include="app\components\login\login.component.ts" />
+    <TypeScriptCompile Include="app\components\navmenu\navmenu.component.ts" />
+    <TypeScriptCompile Include="app\components\pagenav\pageNav.component.ts" />
+    <TypeScriptCompile Include="app\components\privcustomer\createCust.component.ts" />
+    <TypeScriptCompile Include="app\components\privcustomer\IPrivCust.ts" />
+    <TypeScriptCompile Include="app\components\privcustomer\privcustomer.component.ts" />
+    <TypeScriptCompile Include="app\components\project\createProject.component.ts" />
+    <TypeScriptCompile Include="app\components\project\IProject.ts" />
+    <TypeScriptCompile Include="app\components\project\project.component.ts" />
+    <TypeScriptCompile Include="app\components\sms\ISms.ts" />
+    <TypeScriptCompile Include="app\components\sms\sendSms.component.ts" />
+    <TypeScriptCompile Include="app\interceptors\token.interceptor.ts" />
+    <TypeScriptCompile Include="app\main.ts" />
+    <TypeScriptCompile Include="app\pipes\index.ts" />
+    <TypeScriptCompile Include="app\pipes\safeHtml.ts" />
+    <TypeScriptCompile Include="app\services\alert.service.ts" />
+    <TypeScriptCompile Include="app\services\email.service.ts" />
+    <TypeScriptCompile Include="app\services\index.ts" />
+    <TypeScriptCompile Include="app\services\project.service.ts" />
+    <TypeScriptCompile Include="app\services\lead.service.ts" />
+    <TypeScriptCompile Include="app\services\navbar.service.ts" />
+    <TypeScriptCompile Include="app\services\privCustomer.service.ts" />
+    <TypeScriptCompile Include="app\services\user.service.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid-angular\dist\agFrameworkComponent.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid-angular\dist\aggrid.module.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid-angular\dist\aggrid.module.ngfactory.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid-angular\dist\agGridColumn.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid-angular\dist\agGridColumn.ngfactory.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid-angular\dist\agGridNg2.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid-angular\dist\agGridNg2.ngfactory.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid-angular\dist\baseComponentFactory.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid-angular\dist\interfaces.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid-angular\dist\ng2ComponentFactory.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid-angular\dist\ng2FrameworkComponentWrapper.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid-angular\dist\ng2FrameworkFactory.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid-angular\main.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid-angular\src\agFrameworkComponent.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid-angular\src\aggrid.module.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid-angular\src\agGridColumn.ngfactory.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid-angular\src\agGridColumn.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid-angular\src\agGridNg2.ngfactory.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid-angular\src\agGridNg2.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid-angular\src\baseComponentFactory.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid-angular\src\interfaces.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid-angular\src\ng2ComponentFactory.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid-angular\src\ng2FrameworkComponentWrapper.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid-angular\src\ng2FrameworkFactory.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\alignedGridsService.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\baseFrameworkFactory.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\cellNavigationService.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\columnController\autoGroupColService.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\columnController\balancedColumnTreeBuilder.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\columnController\columnApi.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\columnController\columnController.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\columnController\columnKeyCreator.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\columnController\columnUtils.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\columnController\displayedGroupCreator.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\columnController\groupInstanceIdCreator.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\components\agGridNg1.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\components\agGridWebComponent.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\components\colDefUtil.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\components\componentUtil.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\components\framework\agComponentUtils.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\components\framework\componentMetadataProvider.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\components\framework\componentProvider.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\components\framework\componentRecipes.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\components\framework\componentResolver.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\components\framework\frameworkComponentWrapper.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\constants.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\context\beanStub.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\context\context.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\csvCreator.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\downloader.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\dragAndDrop\dragAndDropService.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\dragAndDrop\dragService.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\entities\colDef.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\entities\column.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\entities\columnGroup.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\entities\columnGroupChild.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\entities\defaultColumnTypes.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\entities\gridCell.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\entities\gridOptions.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\entities\gridRow.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\entities\originalColumnGroup.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\entities\originalColumnGroupChild.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\entities\rowNode.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\environment.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\eventKeys.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\events.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\eventService.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\exportParams.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\filter\baseFilter.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\filter\dateFilter.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\filter\filter.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\filter\filterManager.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\filter\floatingFilter.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\filter\floatingFilterWrapper.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\filter\numberFilter.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\filter\textAndNumberFilterParameters.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\filter\textFilter.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\focusedCellController.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\functions.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\grid.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\gridApi.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\gridCore.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\gridOptionsWrapper.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\gridPanel\gridPanel.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\gridPanel\mouseEventService.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\gridPanel\navigationService.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\gridPanel\rowDragFeature.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\gridPanel\scrollVisibleService.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\gridSerializer.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\headerRendering\bodyDropPivotTarget.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\headerRendering\bodyDropTarget.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\headerRendering\cssClassApplier.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\headerRendering\headerContainer.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\headerRendering\headerGroup\headerGroupComp.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\headerRendering\headerGroup\headerGroupWrapperComp.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\headerRendering\headerRenderer.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\headerRendering\headerRowComp.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\headerRendering\header\headerComp.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\headerRendering\header\headerWrapperComp.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\headerRendering\header\selectAllFeature.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\headerRendering\horizontalResizeService.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\headerRendering\hoverFeature.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\headerRendering\moveColumnController.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\headerRendering\standardMenu.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\iLogger.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\interfaces\iAggFuncService.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\interfaces\iClipboardService.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\interfaces\iCompFactory.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\interfaces\iComponent.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\interfaces\iContextMenuFactory.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\interfaces\iEnterpriseCache.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\interfaces\iEnterpriseDatasource.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\interfaces\iEnterpriseRowModel.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\interfaces\iEventEmitter.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\interfaces\iExcelCreator.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\interfaces\iFilter.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\interfaces\iFrameworkFactory.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\interfaces\iMenu.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\interfaces\iMenuFactory.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\interfaces\iRangeController.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\interfaces\iRichCellEditorParams.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\interfaces\iRowModel.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\interfaces\iRowNodeStage.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\interfaces\iSerializedSetFilter.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\interfaces\iSetFilterParams.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\interfaces\iToolPanel.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\interfaces\iViewportDatasource.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\layout\borderLayout.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\layout\tabbedLayout.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\layout\verticalStack.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\logger.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\misc\animationFrameService.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\misc\linkedList.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\misc\simpleHttpRequest.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\propertyKeys.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\rendering\autoHeightCalculator.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\rendering\autoWidthCalculator.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\rendering\beans.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\rendering\cellComp.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\rendering\cellEditorFactory.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\rendering\cellEditors\iCellEditor.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\rendering\cellEditors\largeTextCellEditor.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\rendering\cellEditors\popupEditorWrapper.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\rendering\cellEditors\popupSelectCellEditor.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\rendering\cellEditors\popupTextCellEditor.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\rendering\cellEditors\selectCellEditor.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\rendering\cellEditors\textCellEditor.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\rendering\cellRendererFactory.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\rendering\cellRendererService.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\rendering\cellRenderers\animateShowChangeCellRenderer.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\rendering\cellRenderers\animateSlideCellRenderer.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\rendering\cellRenderers\groupCellRenderer.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\rendering\cellRenderers\iCellRenderer.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\rendering\checkboxSelectionComponent.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\rendering\columnAnimationService.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\rendering\columnHoverService.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\rendering\dateComponent.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\rendering\features\setLeftFeature.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\rendering\heightScaler.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\rendering\overlays\loadingOverlayComponent.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\rendering\overlays\noRowsOverlayComponent.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\rendering\overlays\overlayWrapperComponent.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\rendering\rowComp.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\rendering\rowContainerComponent.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\rendering\rowDragComp.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\rendering\rowRenderer.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\rendering\valueFormatterService.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\rowModels\cache\rowNodeBlock.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\rowModels\cache\rowNodeBlockLoader.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\rowModels\cache\rowNodeCache.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\rowModels\iDatasource.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\rowModels\infinite\infiniteBlock.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\rowModels\infinite\infiniteCache.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\rowModels\infinite\infiniteRowModel.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\rowModels\inMemory\changedPath.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\rowModels\inMemory\filterStage.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\rowModels\inMemory\flattenStage.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\rowModels\inMemory\immutableService.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\rowModels\inMemory\inMemoryNodeManager.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\rowModels\inMemory\inMemoryRowModel.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\rowModels\inMemory\sortStage.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\rowModels\paginationProxy.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\rowModels\pagination\paginationComp.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\rowModels\pinnedRowModel.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\rowNodes\filterService.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\rowNodes\rowNodeFactory.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\rowNodes\selectableService.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\rowNodes\sortService.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\selectionController.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\sortController.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\styling\stylingService.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\templateService.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\utils.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\valueService\changeDetectionService.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\valueService\expressionService.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\valueService\valueCache.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\valueService\valueService.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\widgets\agCheckbox.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\widgets\component.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\widgets\componentAnnotations.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\widgets\popupService.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\widgets\testingSandbox.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\widgets\touchListener.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\dist\lib\xmlFactory.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\exports.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\main.d.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\alignedGridsService.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\baseFrameworkFactory.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\cellNavigationService.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\columnController\autoGroupColService.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\columnController\balancedColumnTreeBuilder.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\columnController\columnApi.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\columnController\columnController.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\columnController\columnKeyCreator.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\columnController\columnUtils.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\columnController\displayedGroupCreator.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\columnController\groupInstanceIdCreator.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\components\agGridNg1.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\components\agGridWebComponent.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\components\colDefUtil.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\components\componentUtil.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\components\framework\agComponentUtils.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\components\framework\componentMetadataProvider.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\components\framework\componentProvider.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\components\framework\componentRecipes.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\components\framework\componentResolver.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\components\framework\frameworkComponentWrapper.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\constants.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\context\beanStub.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\context\context.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\csvCreator.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\downloader.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\dragAndDrop\dragAndDropService.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\dragAndDrop\dragService.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\entities\colDef.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\entities\column.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\entities\columnGroup.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\entities\columnGroupChild.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\entities\defaultColumnTypes.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\entities\gridCell.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\entities\gridOptions.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\entities\gridRow.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\entities\originalColumnGroup.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\entities\originalColumnGroupChild.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\entities\rowNode.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\environment.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\eventKeys.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\events.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\eventService.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\exportParams.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\filter\baseFilter.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\filter\dateFilter.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\filter\filter.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\filter\filterManager.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\filter\floatingFilter.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\filter\floatingFilterWrapper.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\filter\numberFilter.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\filter\textAndNumberFilterParameters.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\filter\textFilter.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\focusedCellController.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\functions.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\grid.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\gridApi.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\gridCore.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\gridOptionsWrapper.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\gridPanel\gridPanel.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\gridPanel\mouseEventService.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\gridPanel\navigationService.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\gridPanel\rowDragFeature.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\gridPanel\scrollVisibleService.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\gridSerializer.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\headerRendering\bodyDropPivotTarget.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\headerRendering\bodyDropTarget.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\headerRendering\cssClassApplier.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\headerRendering\headerContainer.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\headerRendering\headerGroup\headerGroupComp.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\headerRendering\headerGroup\headerGroupWrapperComp.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\headerRendering\headerRenderer.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\headerRendering\headerRowComp.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\headerRendering\header\headerComp.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\headerRendering\header\headerWrapperComp.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\headerRendering\header\selectAllFeature.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\headerRendering\horizontalResizeService.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\headerRendering\hoverFeature.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\headerRendering\moveColumnController.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\headerRendering\standardMenu.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\iLogger.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\interfaces\iAggFuncService.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\interfaces\iClipboardService.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\interfaces\iCompFactory.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\interfaces\iComponent.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\interfaces\iContextMenuFactory.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\interfaces\iEnterpriseCache.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\interfaces\iEnterpriseDatasource.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\interfaces\iEnterpriseRowModel.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\interfaces\iEventEmitter.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\interfaces\iExcelCreator.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\interfaces\iFilter.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\interfaces\iFrameworkFactory.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\interfaces\iMenu.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\interfaces\iMenuFactory.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\interfaces\iRangeController.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\interfaces\iRichCellEditorParams.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\interfaces\iRowModel.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\interfaces\iRowNodeStage.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\interfaces\iSerializedSetFilter.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\interfaces\iSetFilterParams.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\interfaces\iToolPanel.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\interfaces\iViewportDatasource.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\layout\borderLayout.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\layout\tabbedLayout.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\layout\verticalStack.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\logger.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\misc\animationFrameService.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\misc\linkedList.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\misc\simpleHttpRequest.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\propertyKeys.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\rendering\autoHeightCalculator.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\rendering\autoWidthCalculator.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\rendering\beans.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\rendering\cellComp.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\rendering\cellEditorFactory.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\rendering\cellEditors\iCellEditor.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\rendering\cellEditors\largeTextCellEditor.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\rendering\cellEditors\popupEditorWrapper.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\rendering\cellEditors\popupSelectCellEditor.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\rendering\cellEditors\popupTextCellEditor.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\rendering\cellEditors\selectCellEditor.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\rendering\cellEditors\textCellEditor.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\rendering\cellRendererFactory.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\rendering\cellRendererService.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\rendering\cellRenderers\animateShowChangeCellRenderer.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\rendering\cellRenderers\animateSlideCellRenderer.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\rendering\cellRenderers\groupCellRenderer.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\rendering\cellRenderers\iCellRenderer.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\rendering\checkboxSelectionComponent.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\rendering\columnAnimationService.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\rendering\columnHoverService.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\rendering\dateComponent.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\rendering\features\setLeftFeature.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\rendering\heightScaler.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\rendering\overlays\loadingOverlayComponent.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\rendering\overlays\noRowsOverlayComponent.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\rendering\overlays\overlayWrapperComponent.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\rendering\rowComp.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\rendering\rowContainerComponent.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\rendering\rowDragComp.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\rendering\rowRenderer.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\rendering\valueFormatterService.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\rowModels\cache\rowNodeBlock.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\rowModels\cache\rowNodeBlockLoader.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\rowModels\cache\rowNodeCache.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\rowModels\iDatasource.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\rowModels\infinite\infiniteBlock.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\rowModels\infinite\infiniteCache.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\rowModels\infinite\infiniteRowModel.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\rowModels\inMemory\changedPath.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\rowModels\inMemory\filterStage.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\rowModels\inMemory\flattenStage.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\rowModels\inMemory\immutableService.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\rowModels\inMemory\inMemoryNodeManager.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\rowModels\inMemory\inMemoryRowModel.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\rowModels\inMemory\sortStage.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\rowModels\paginationProxy.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\rowModels\pagination\paginationComp.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\rowModels\pinnedRowModel.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\rowNodes\filterService.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\rowNodes\rowNodeFactory.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\rowNodes\selectableService.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\rowNodes\sortService.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\selectionController.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\sortController.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\styling\stylingService.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\templateService.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\utils.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\valueService\changeDetectionService.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\valueService\expressionService.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\valueService\valueCache.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\valueService\valueService.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\widgets\agCheckbox.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\widgets\component.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\widgets\componentAnnotations.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\widgets\popupService.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\widgets\testingSandbox.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\widgets\touchListener.ts" />
+    <TypeScriptCompile Include="node_modules\ag-grid\src\ts\xmlFactory.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BL\BL.csproj">
+      <Project>{c5800976-474f-4a9f-8891-240d62601964}</Project>
+      <Name>BL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DTO\DTO.csproj">
+      <Project>{ccde3baa-12f6-4686-bee8-1807080b0db2}</Project>
+      <Name>DTO</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>51595</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:51595/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.4.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.4.0\build\Microsoft.Net.Compilers.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

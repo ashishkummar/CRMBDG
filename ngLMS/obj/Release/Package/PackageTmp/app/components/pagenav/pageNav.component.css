@@ -1,0 +1,54 @@
+﻿@media (min-width: 768px) {
+    .navbar-header {
+        float: none;
+        margin-left: -15px;
+        margin-right: -15px;
+        background-color: #001b8b;
+    }
+    .navbar {
+        position: relative;
+        min-height: 50px;
+        margin-bottom: 5px;
+        border: 1px solid transparent;
+    }
+    .pageTitle {
+        width: 60%;
+        text-align: center;
+        padding-top: 5px;
+        color: #fff
+    }
+
+    a {
+        font-size: large;
+        color: #dddbdb;
+    }
+
+    a:hover {
+        color: #fff;
+    }
+
+    .rightpanel {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 11px;
+        width: 20%;
+    }
+    .pageutil {
+        float: right;
+        font-size: 25px;
+        color: #fff;
+        padding-right:5px;
+    }
+        .pageutil :hover {
+            cursor: pointer;
+        }
+    .userName {
+        color: #fff;
+        font-size: small;
+    }
+    .logoutbtn {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+}

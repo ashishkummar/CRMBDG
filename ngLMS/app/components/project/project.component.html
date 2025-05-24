@@ -1,0 +1,62 @@
+﻿<!--<p-fileUpload mode="basic" name="myfile[]" customUpload="true" (uploadHandler)="uploadProject($event)"></p-fileUpload>-->
+<app-loader [loader]="isLoading"></app-loader>
+<!--<input type="file" id="btnUpload" value="Upload" (change)="fileChange($event)" />-->
+<p-confirmDialog></p-confirmDialog>
+<div>
+    <div>
+        <div class="gridCustomToolbar">
+            <div style="width: 30%">
+                <a class="btn btn-primary" (click)="addNewProject()" title="Add New Project"><i class="fa fa-plus"></i></a>
+                <a class="btn btn-primary" (click)="deleteConfirm()" *ngIf="isAdmin" title="Delete selected Lead"><i class="fa fa-trash"></i></a>
+            </div>
+            <div style="width: 70%;display: flex;justify-content: inherit;">
+                <!--<div *ngIf="isAdmin">
+                    <span class="toolspan">Assign selected leads to</span>
+                    <select [(ngModel)]="AssignToUser" style="max-width: 231px;">
+                        <option *ngFor="let lang of ActiveUsers"
+                                [value]="lang.id">
+                            {{lang.name}}
+                        </option>
+                    </select>
+                    <button class="btn btn-primary" (click)="assignTo()">Assign</button>
+                </div>
+                <span class="toolspan">Search record from</span>
+                <p-calendar [(ngModel)]="searchFromDt" dateFormat="dd/mm/yy" [monthNavigator]="true" [yearNavigator]="true" yearRange="2000:2030"></p-calendar>
+                <span class="toolspan">To</span>
+                <p-calendar [(ngModel)]="searchToDt" dateFormat="dd/mm/yy" [monthNavigator]="true" [yearNavigator]="true" yearRange="2000:2030"></p-calendar>
+                <button class="btn btn-primary" (click)="LoadLeadForUser()">GO</button>-->
+            </div>
+        </div>
+    </div>
+    <div style="display:flex;">
+        <input type="text" class="form-control" [(ngModel)]="quickFilterTxt" placeholder="Quick search..." (input)="onFilterTextBoxChanged($event.target.value)" />
+        <button class="btn btn-primary" (click)="clearAllFilter()" title="Clear all filters"><i class="fa fa-search-minus" aria-hidden="true"></i></button>
+    </div>
+</div>
+<div style=" height:calc(100% - 115px)">
+    <ag-grid-angular #agGrid style="width: 100%; height: calc(100% - 5px);" class="ag-theme-blue"
+                     [gridOptions]="gridOptions"
+                     [columnDefs]="columnDefs"
+                     [rowData]="rowData"
+                     [enableFilter]=true
+                     [enableColResize]="true"
+                     [rowSelection]="rowSelection"
+                     [getRowNodeId]="getRowNodeId"
+                     >
+    </ag-grid-angular>
+</div>
+
+
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayCreateProject}">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header reqheader">
+                <button type="button" class="close" aria-label="Close" (click)="onCloseHandled()"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Create New Project</h4>
+            </div>
+            <div class="modal-body" *ngIf="displayCreateProject == 'block'">
+                <create-project (onSaveClick)="SaveProject($event[0])"></create-project>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal !-->

@@ -1,0 +1,25 @@
+﻿.alertPosition {
+    position: fixed;
+    top: 57px;
+    right: 20px;
+    z-index: 9999;
+}
+
+.alert-success-cus {
+    color: #ffffff;
+    background-color: #277706;
+    border-color: #000000;
+}
+
+.alert-danger-cus {
+    color: #ffffff;
+    background-color: #b70a0a;
+    border-color: #170004;
+}
+
+.alert-warning-cus {
+    color: #ffffff;
+    background-color: #ff6700;
+    border-color: #fe8a3a;
+}
+

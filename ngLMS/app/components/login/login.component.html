@@ -1,0 +1,53 @@
+﻿<app-loader [loader]="isLoading"></app-loader>
+<section class="hero">
+    <div class="container">
+        <div class="row loginRow">
+            <div class="col-md-6 col-sm-8 mx-auto">
+                <div class="card border-none">
+                    <div class="card-body">
+                        <div class="mt-2">
+                            <img src="img/male.jpg" alt="Male" class="brand-logo mx-auto d-block img-fluid rounded-circle" />
+                        </div>
+                        <p class="mt-4 text-white lead text-center">
+                            Sign in to access your Authority account
+                        </p>
+                        <div class="mt-4">
+                            <form [formGroup]="loginForm">
+                                <div class="form-group">
+                                    <input type="email" class="form-control" formControlName="userID" placeholder="Enter user id">
+                                    <div class="invalid-feedback"
+                                         *ngIf="loginForm.get('userID').errors && (loginForm.get('userID').dirty || loginForm.get('userID').touched)">
+                                        <div class="invalid-tooltip" *ngIf="loginForm.get('userID').errors.required">User ID is required</div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control" formControlName="password" placeholder="Enter password">
+                                    <div class="invalid-feedback"
+                                         *ngIf="loginForm.get('password').errors && (loginForm.get('password').dirty || loginForm.get('password').touched)">
+                                        <div class="invalid-tooltip" *ngIf="loginForm.get('password').errors.required">Password is required</div>
+                                    </div>
+                                </div>
+                                <!--<label class="custom-control custom-checkbox mt-2">
+    <input type="checkbox" class="custom-control-input">
+    <span class="custom-control-indicator"></span>
+    <span class="custom-control-description text-white">Keep me logged in</span>
+                            </label>-->
+                                <button type="submit" class="btn btn-primary float-right" [disabled]="loading" (click)="login()">Sign in</button>
+                            </form>
+                            <div class="clearfix"></div>
+                            <div class="alert alert-danger" role="alert" *ngIf="errorMsg">
+                               {{errorMsg}}
+                            </div>
+                            <p class="content-divider center mt-4"><span>Note</span></p>
+                            <p class="content-divider center mt-4 notice-text"><marquee></marquee></p>
+                        </div>
+                       
+                        <p class="text-center text-bottom">
+                            &copy; 2018 Lead Management system
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

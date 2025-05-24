@@ -1,0 +1,23 @@
+C:\Users\Amrit\source\repos\BL\bin\Debug\BL.dll
+C:\Users\Amrit\source\repos\BL\bin\Debug\BL.pdb
+C:\Users\Amrit\source\repos\BL\bin\Debug\DAO.dll
+C:\Users\Amrit\source\repos\BL\bin\Debug\DTO.dll
+C:\Users\Amrit\source\repos\BL\obj\Debug\BL.csprojResolveAssemblyReference.cache
+C:\Users\Amrit\source\repos\BL\obj\Debug\BL.csproj.CoreCompileInputs.cache
+C:\Users\Amrit\source\repos\BL\obj\Debug\BL.csproj.CopyComplete
+C:\Users\Amrit\source\repos\BL\obj\Debug\BL.dll
+C:\Users\Amrit\source\repos\BL\obj\Debug\BL.pdb
+C:\D Drive\Development\GitHubRepos\LmsMvcAng\BL\bin\Debug\BL.dll
+C:\D Drive\Development\GitHubRepos\LmsMvcAng\BL\bin\Debug\BL.pdb
+C:\D Drive\Development\GitHubRepos\LmsMvcAng\BL\bin\Debug\DAO.dll
+C:\D Drive\Development\GitHubRepos\LmsMvcAng\BL\bin\Debug\DTO.dll
+C:\D Drive\Development\GitHubRepos\LmsMvcAng\BL\bin\Debug\MySql.Data.dll
+C:\D Drive\Development\GitHubRepos\LmsMvcAng\BL\bin\Debug\DAO.pdb
+C:\D Drive\Development\GitHubRepos\LmsMvcAng\BL\bin\Debug\DTO.pdb
+C:\D Drive\Development\GitHubRepos\LmsMvcAng\BL\obj\Debug\BL.csprojResolveAssemblyReference.cache
+C:\D Drive\Development\GitHubRepos\LmsMvcAng\BL\obj\Debug\BL.csproj.CoreCompileInputs.cache
+C:\D Drive\Development\GitHubRepos\LmsMvcAng\BL\obj\Debug\BL.csproj.CopyComplete
+C:\D Drive\Development\GitHubRepos\LmsMvcAng\BL\obj\Debug\BL.dll
+C:\D Drive\Development\GitHubRepos\LmsMvcAng\BL\obj\Debug\BL.pdb
+C:\D Drive\Development\GitHubRepos\LmsMvcAng\BL\bin\Debug\Newtonsoft.Json.dll
+C:\D Drive\Development\GitHubRepos\LmsMvcAng\BL\bin\Debug\Newtonsoft.Json.xml

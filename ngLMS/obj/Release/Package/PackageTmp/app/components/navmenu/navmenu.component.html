@@ -1,0 +1,66 @@
+<div class="wrapper">
+    <!-- Sidebar Holder -->
+    <nav id="sidebar" [ngClass]="colapsePanel ? 'active' : ''">
+        <div class="sidebar-header">
+            <h3>Lead Management</h3>
+            <strong><img src="../../../img/HeaderLogo.png" style="height:35px;"/></strong>
+        </div>
+        <ul class="list-unstyled components">
+            <li>
+                <a [routerLink]="['/leads/leadManager']">
+                    <i class="fa fa-university"></i>
+                    Lead Bank
+                </a>
+
+            </li>
+            <li *ngIf="isAdm">
+                <a href="#LeadMaster" data-toggle="collapse" aria-expanded="false">
+                    <i class="glyphicon glyphicon-home"></i>
+                    Lead Master
+                </a>
+                <ul class="collapse list-unstyled" id="LeadMaster">
+                    <li><a [routerLink]="['/home/magicbricks']">Fetch Lead</a></li>
+                    <li><a [routerLink]="['/home/createUser']">Manage Users</a></li>
+                </ul>
+            </li>
+            <li>
+                <a [routerLink]="['/project/details']">
+                    <i class="fa fa-line-chart"></i>
+                    Projects
+                </a>
+            </li>
+            <li *ngIf="isAdm">
+                <a [routerLink]="['/customer/privilage']">
+                    <i class="fa fa-handshake-o"></i>
+                    Privilege Customer
+                </a>
+
+            </li>
+            <li>
+                <a href="#Mailer" data-toggle="collapse" aria-expanded="false">
+                    <i class="fa fa-envelope"></i>
+                    Mailer
+                </a>
+                <ul class="collapse list-unstyled" id="Mailer">
+                    <li><a>Mailer</a></li>
+                    <li><a>Mail Blaster</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="http://smsnmedia.com/" target="_blank">
+                    <i class="fa fa-mobile"></i>
+                    Send SMS
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Page Content Holder -->
+    <div id="content">
+        <page-bar></page-bar>
+        <div id="mainContent" style="height:100%;">
+            <alert></alert>
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

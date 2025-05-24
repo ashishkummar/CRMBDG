@@ -1,0 +1,28 @@
+﻿.toolspan {
+    line-height: 23px;
+    padding: 3px;
+}
+.editorContainer{
+    /*height:calc(100% - 10px);*/
+}
+.toolbar {
+    background-color: #7386d5;
+    color: #fff;
+    padding: 5px;
+}
+    .toolbar .toolbarGroup {
+        display: flex;
+        padding-bottom: 5px;
+    }
+
+        .toolbar .toolbarGroup .toolItemLabel {
+            width: 8%;
+        }
+
+        .toolbar .toolbarGroup .toolItem {
+            width: 90%;
+        }
+
+.bottomBar{
+    padding:5px;
+}

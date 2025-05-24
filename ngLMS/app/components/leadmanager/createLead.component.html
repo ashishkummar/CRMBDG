@@ -1,0 +1,123 @@
+<p-growl [(value)]="popMsg"></p-growl>
+<div class="row">
+    <div class="col-md-12">
+        <form [formGroup]="createLead" novalidate>
+
+            <div class="form-group"
+                 [ngClass]="{
+                                'has-error': createLead.get('name').invalid && (createLead.get('name').dirty || createLead.get('name').touched),
+                                'has-success': createLead.get('name').valid && (createLead.get('name').dirty || createLead.get('name').touched)
+                              }">
+                <label>Name</label>
+                <input type="text"
+                       class="form-control"
+                       formControlName="name">
+                <div class="invalid-feedback"
+                     *ngIf="createLead.get('name').errors && (createLead.get('name').dirty || createLead.get('name').touched)">
+                    <div class="invalid-tooltip" *ngIf="createLead.get('name').errors.required">Name is required</div>
+                </div>
+            </div>
+
+            <div class="form-group"
+                 [ngClass]="{
+                    'has-error':  createLead.get('email').invalid && (createLead.get('email').dirty ),
+                    'has-success': createLead.get('email').valid && (createLead.get('email').dirty )
+                  }">
+                <label>Email</label>
+                <input type="email"
+                       class="form-control"
+                       formControlName="email">
+                <div class="invalid-feedback"  *ngIf="createLead.get('email').errors && (createLead.get('email').dirty || createLead.get('email').touched)">
+                    <p *ngIf="createLead.get('email').errors">Invalid email id</p>
+                    <p *ngIf="createLead.get('email').errors.required">Email id is required</p>
+                </div>
+            </div>
+
+            <div class="form-group"
+                 [ngClass]="{
+                    'has-error':  createLead.get('contact').invalid && (createLead.get('contact').dirty ),
+                    'has-success': createLead.get('contact').valid && (createLead.get('contact').dirty )
+                  }">
+                <label>Contact</label>
+                <input type="text"
+                       class="form-control"
+                       formControlName="contact">
+                <div class="invalid-feedback"
+                     *ngIf="createLead.get('contact').errors && (createLead.get('contact').dirty || createLead.get('contact').touched)">
+                    <p *ngIf="createLead.get('contact').errors">Invalid contact</p>
+                    <p *ngIf="createLead.get('contact').errors.required">Contact is required</p>
+                </div>
+            </div>
+
+            <div class="form-group"
+                 [ngClass]="{
+                'has-error': createLead.get('Source').invalid && (createLead.get('Source').dirty || createLead.get('Source').touched),
+                'has-success': createLead.get('Source').valid && (createLead.get('Source').dirty || createLead.get('Source').touched)
+              }">
+                <label>Lead Source</label>
+                <select class="form-control"
+                        formControlName="Source">
+                    <option value="">-- Select Source --</option>
+                    <option *ngFor="let lang of sources"
+                            [value]="lang.id">
+                        {{lang.value}}
+                    </option>
+                </select>
+                <div class="invalid-feedback"
+                     *ngIf="createLead.get('Source').errors && (createLead.get('Source').dirty|| createLead.get('Source').touched)">
+                    <p *ngIf="createLead.get('Source').errors.required">Source is required</p>
+                </div>
+            </div>
+
+            <div class="form-group"
+                 [ngClass]="{
+                'has-error': createLead.get('Type').invalid && (createLead.get('Type').dirty || createLead.get('Type').touched),
+                'has-success': createLead.get('Type').valid && (createLead.get('Type').dirty || createLead.get('Type').touched)
+              }">
+                <label>Lead Type</label>
+                <select class="form-control"
+                        formControlName="Type">
+                    <option value="">-- Select Type -- </option>
+                    <option *ngFor="let lang of type"
+                            [value]="lang.id">
+                        {{lang.value}}
+                    </option>
+                </select>
+                <div class="invalid-feedback"
+                     *ngIf="createLead.get('Type').errors && (createLead.get('Type').dirty || createLead.get('Type').touched)">
+                    <p *ngIf="createLead.get('Type').errors.required">Type is required</p>
+                </div>
+            </div>
+
+            <div class="form-group"
+                 [ngClass]="{
+                'has-error': createLead.get('createdOn').invalid && (createLead.get('createdOn').dirty || createLead.get('createdOn').touched),
+                'has-success': createLead.get('createdOn').valid && (createLead.get('createdOn').dirty || createLead.get('createdOn').touched)
+              }">
+                <label>Date</label>
+                <p-calendar formControlName="createdOn"
+                            dateFormat="dd/mm/yy"
+                            [monthNavigator]="true"
+                            [yearNavigator]="true"
+                            yearRange="2015:2030"></p-calendar>
+            </div>
+
+            <div class="form-group"
+                 [ngClass]="{
+                'has-error': createLead.get('query').invalid && (createLead.get('query').dirty || createLead.get('query').touched),
+                'has-success': createLead.get('query').valid && (createLead.get('query').dirty || createLead.get('query').touched)
+              }">
+                <label>Query</label>
+                <textarea class="form-control"
+                          formControlName="query"></textarea>
+                <div class="invalid-feedback"
+                       *ngIf="createLead.get('query').errors && (createLead.get('query').dirty || createLead.get('query').touched)">
+                    <p *ngIf="createLead.get('query').errors.required">Query is required</p>
+                </div>
+            </div>
+            <div class="form-group">
+            <button class="btn btn-primary" (click)="insertLead()" [disabled]="!createLead.valid">Save</button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,42 @@
+<app-loader [loader]="isLoading"></app-loader>
+<div>
+    <div>
+        <div class="gridCustomToolbar">
+            <div>
+                <button class="btn btn-primary" (click)="createCustomer()">Add New Customer</button>
+                <button class="btn btn-primary" (click)="DeleteCustomer()">Delete Customer</button>
+            </div>
+           
+        </div>
+    </div>
+    <input type="text" class="form-control" placeholder="Quick search..." (input)="onFilterTextBoxChanged($event.target.value)" />
+</div>
+<div style=" height:calc(100% - 115px)">
+    <ag-grid-angular #agGrid style="width: 100%; height: calc(100% - 5px);" class="ag-theme-blue"
+                     [gridOptions]="gridOptions"
+                     [columnDefs]="columnDefs"
+                     [rowData]="rowData"
+                     [enableFilter]=true
+                     [frameworkComponents]="frameworkComponents"
+                     [rowSelection]="rowSelection"
+                     [enableColResize]="true"
+                     [getRowNodeId]="getRowNodeId"
+                     (rowClicked)="openModal($event)">
+    </ag-grid-angular>
+</div>
+<div class="backdrop" [ngStyle]="{'display':display}"></div>
+
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':display}">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header reqheader">
+                <button type="button" class="close" aria-label="Close" (click)="onCloseHandled()"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" *ngIf="selectedRec.ID>0">Update Customer</h4>
+                <h4 class="modal-title" *ngIf="selectedRec.ID===0">Add New Customer</h4>
+            </div>
+            <div class="modal-body" *ngIf="display=='block'">
+               <create-customer (onSaveClick)="saveCustomer($event[0])" [customerData]="selectedRec"></create-customer>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal !-->

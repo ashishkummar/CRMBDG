@@ -1,0 +1,254 @@
+<app-loader [loader]="isLoading"></app-loader>
+<p-confirmDialog></p-confirmDialog>
+<div>
+    <div>
+        <div class="gridCustomToolbar">
+            <div style="width: 30%">
+                <a class="btn btn-primary" (click)="addNewLead()" title="Add New Lead"><i class="fa fa-address-card-o"></i></a>
+                <a class="btn btn-primary" [routerLink]="['/home/magicbricks']" *ngIf="isAdmin" title="Fetch Lead"><i class="fa fa-download" aria-hidden="true"></i></a>
+                <a class="btn btn-primary" (click)="export()" title="Export To File"><i class="fa fa-file-excel-o" aria-hidden="true"></i></a>
+                <button class="btn btn-primary" (click)="displayChart()" title="Status Report"><i class="fa fa-pie-chart" aria-hidden="true"></i></button>
+                <button class="btn btn-primary" (click)="assignRtp()" *ngIf="isAdmin" title="User wise assignment Report"><i class="fa fa-bar-chart" aria-hidden="true"></i></button>
+            </div>
+            <div style="width: 70%;display: flex;justify-content: inherit;">
+                <span class="toolspan">Search record from</span>
+                <p-calendar [(ngModel)]="searchFromDt" dateFormat="dd/mm/yy" [monthNavigator]="true" [yearNavigator]="true" yearRange="2000:2030"></p-calendar>
+                <span class="toolspan">To</span>
+                <p-calendar [(ngModel)]="searchToDt" dateFormat="dd/mm/yy" [monthNavigator]="true" [yearNavigator]="true" yearRange="2000:2030"></p-calendar>
+                <button class="btn btn-primary" (click)="LoadLeadForUser()">GO</button>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="gridCustomToolbar" *ngIf="isAdmin" style="background-color: #000d45;">
+            <div style="width: 60%">
+                <span class="toolspan" style="color:#fff">Select leads from</span>
+                <select style="max-width: 231px;" [(ngModel)]="selectedUser" (change)="onSourceChange($event.target.selectedOptions[0].label,'3')">
+                    <option value="All">All</option>
+                    <option *ngFor="let lang of ActiveUsers"
+                            [value]="lang.id">
+                        {{lang.name}}
+                    </option>
+                </select>
+                <span class="toolspan"style="color:#fff">Filter Lead by</span>
+                <select style="max-width: 231px;" [(ngModel)]="selectedSource" (change)="onSourceChange($event.target.value,'2')">
+                    <option value="">--Select source--</option>
+                    <option value="All">All</option>
+                    <option *ngFor="let lang of LeadSource"
+                            [value]="lang.id">
+                        {{lang.value}}
+                    </option>
+                </select>
+                <select style="max-width: 231px;" [(ngModel)]="selectedStatus" (change)="onSourceChange($event.target.value,'1')">
+                    <option value="">--Status--</option>
+                    <option value="All">All</option>
+                    <option *ngFor="let lang of status"
+                            [value]="lang.value">
+                        {{lang.value}}
+                    </option>
+                </select>
+            </div>
+            <div style="width: 40%;display: flex;justify-content: inherit;">
+                <div *ngIf="isAdmin">
+                    <span class="toolspan" style="color:#fff">Assign selected leads to</span>
+                    <select [(ngModel)]="AssignToUser" style="max-width: 231px;">
+                        <option *ngFor="let lang of ActiveUsers"
+                                [value]="lang.id">
+                            {{lang.name}}
+                        </option>
+                    </select>
+                    <button class="btn btn-primary" (click)="assignTo()">Assign</button>
+                    <a class="btn btn-primary" (click)="deleteConfirm()" *ngIf="isAdmin" title="Delete selected Lead"><i class="fa fa-trash"></i></a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div style="display: flex;background-color:#001b8b;padding-top:5px;">
+        <div style="width: 11%;display: grid;cursor: pointer;" (click)="onSourceChange('All','1')"><a style="color: #ffffff;margin-left: 40%;"><i class="fa fa-pie-chart fa-2x"></i></a><div style="color: #ffffff;text-align: center;">Total - {{totalRecord}}</div></div>
+        <div style="width: 11%;display: grid;cursor: pointer;" (click)="onSourceChange('New','1')"><a style="color: #ffffff;margin-left: 40%;" ><i class="fa fa-user-plus fa-2x"></i></a><div style="color: #ffffff;text-align: center;">New - {{newRecord}}</div></div>
+        <div style="width: 11%;display: grid;cursor: pointer;" (click)="onSourceChange('Answered','1')"><a style="color: #ffffff;margin-left: 40%;"><i class="fa fa-volume-control-phone fa-2x"></i></a><div style="color: #ffffff;text-align: center;">Answered - {{AnsRecord}}</div></div>
+        <div style="width: 11%;display: grid;cursor: pointer;" (click)="onSourceChange('Scheduled','1')"><a style="color: #ffffff;margin-left: 40%;"><i class="fa fa-bell-o fa-2x"></i></a><div style="color: #ffffff;text-align: center;">Scheduled - {{SchRecord}}</div></div>
+        <div style="width: 11%;display: grid;cursor: pointer;" (click)="onSourceChange('Visited','1')"><a style="color: #ffffff;margin-left: 40%;"><i class="fa fa-building fa-2x"></i></a><div style="color: #ffffff;text-align: center;">Visitied - {{VisRecord}}</div></div>
+        <div style="width: 11%;display: grid;cursor: pointer;" (click)="onSourceChange('Broker','1')"><a style="color: #ffffff;margin-left: 40%;" ><i class="fa fa-user-secret fa-2x"></i></a><div style="color: #ffffff;text-align: center;">Broker - {{broRecord}}</div></div>
+        <div style="width: 11%;display: grid;cursor: pointer;" (click)="onSourceChange('Hot','1')"><a style="color: #ffffff;margin-left: 40%;"><i class="fa fa-fire fa-2x"></i></a><div style="color: #ffffff;text-align: center;">Hot Client - {{HotRecord}}</div></div>
+        <div style="width: 11%;display: grid;cursor: pointer;" (click)="onSourceChange('Closed','1')"><a style="color: #ffffff;margin-left: 40%;"><i class="fa fa-user-o fa-2x"></i></a><div style="color: #ffffff;text-align: center;">Closed - {{CloRecord}}</div></div>
+        <div style="width: 11%;display: grid;cursor: pointer;" (click)="onSourceChange('Deactivated','1')"><a style="color: #ffffff;margin-left: 40%;"><i class="fa fa-user-times fa-2x"></i></a><div style="color: #ffffff;text-align: center;">Deactivated - {{DeactRecord}}</div></div>
+    </div>
+    <div style="display:flex;">
+        <input type="text" class="form-control" [(ngModel)]="quickFilterTxt" placeholder="Quick search..." (input)="onFilterTextBoxChanged($event.target.value)" />
+        <button class="btn btn-primary" (click)="clearAllFilter()" title="Clear all filters"><i class="fa fa-search-minus" aria-hidden="true"></i></button>
+    </div>
+</div>
+<div style=" height:calc(100% - 200px)">
+    <ag-grid-angular #agGrid style="width: 100%; height: calc(100% - 5px);" class="ag-theme-blue"
+                     [gridOptions]="gridOptions"
+                     [columnDefs]="columnDefs"
+                     [rowData]="rowData"
+                     [enableFilter]=true
+                     [enableSorting]="true"
+                     [frameworkComponents]="frameworkComponents"
+                     [rowSelection]="rowSelection"
+                     [enableColResize]="true"
+                     [getRowNodeId]="getRowNodeId"
+                     (rowDoubleClicked)="openModal($event)"
+                     (rowDataChanged)="calculateRecordCount()">
+    </ag-grid-angular>
+</div>
+<div class="backdrop" [ngStyle]="{'display':display}"></div>
+
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':display}">
+    <div class="modal-dialog modal-lg" style="width: calc(100% - 100px);" role="document">
+        <div class="modal-content">
+            <div class="modal-header reqheader">
+                <button type="button" class="close" aria-label="Close" (click)="onCloseHandled()"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Lead Detail</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-5 col-md-5">
+                        <table class="table table-bordered" style="font-size:12px;">
+                            <thead>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">Lead Id</th>
+                                    <td>{{selectedLead?.leadID}}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Requestor Name</th>
+                                    <td>{{selectedLead?.leadName}}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Contact Number</th>
+                                    <td>{{selectedLead?.leadContact}}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">e-Mail</th>
+                                    <td>{{selectedLead?.leadEmail}}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Lead Status</th>
+                                    <td>
+                                        <select [(ngModel)]="selectedLead.status.id">
+                                            <option *ngFor="let lang of status"
+                                                    [value]="lang.id">
+                                                {{lang.value}}
+                                            </option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr *ngIf="selectedLead.status.id == 3 || selectedLead.status.id == 6 || selectedLead.status.id == 9">
+                                    <th scope="row">Scheduled on</th>
+                                    <td>
+                                        <p-calendar [(ngModel)]="selectedLead.reminderDate" showTime="true" hourFormat="12" dateFormat="dd/mm/yy" [monthNavigator]="true" [yearNavigator]="true" yearRange="2000:2030"></p-calendar>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Lead Source</th>
+                                    <td>{{selectedLead?.leadSource}}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Lead Type</th>
+                                    <td>{{selectedLead?.leadType}}</td>
+                                </tr>
+                                <tr *ngIf="isAdmin">
+                                    <th scope="row">Assigned to</th>
+                                    <td>
+                                        <select [(ngModel)]="selectedLead.uid">
+                                            <option *ngFor="let lang of ActiveUsers"
+                                                    [value]="lang.id">
+                                                {{lang.name}}
+                                            </option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Lead Date</th>
+                                    <td>{{selectedLead?.leadEntryDate | date:'medium'}}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Assign Date</th>
+                                    <td>{{selectedLead?.lastUpdatedOn | date:'medium'}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <textarea class="form-control" placeholder="Post a messge" [(ngModel)]="userMessage"></textarea>
+                        <button class="btn btn-primary" (click)="updateLead()">Update</button>
+                        <button class="btn btn-primary" (click)="downloadPdf()">Download as PDF</button>
+                        <button class="btn btn-primary" *ngIf="isAdmin" (click)="updateAllMessages()">Delete All Messages</button>
+                    </div>
+                    <div class="col-lg-7 col-md-7">
+                        <table class="table table-bordered" style="font-size:12px;">
+                            <thead>
+                                <tr class="reqheader">
+                                    <th scope="row" class="message">Requirement/Query</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>{{selectedLead?.leadQuery}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table class="table table-bordered" style="font-size:12px;">
+                            <thead>
+                                <tr class="reqheader">
+                                    <th scope="row" class="message">
+                                        Messages
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="list-group listmsgbox marginremove">
+                                            <div [ngClass]="msg.postedByUID == 1 ? ['list-group-item','list-group-item-action','flex-column','align-items-start','adminmsg']
+                                             :['list-group-item','list-group-item-action','flex-column','align-items-start']"
+                                                 *ngFor="let msg of leadMsg">
+                                                <p class="mb-1" style="margin: 0 0 0 0px;">{{msg.message}}</p>
+                                                <small>{{msg.postedBy}} - {{msg.comDate | date:'medium'}}</small>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal !-->
+
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayCreateLead}">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header reqheader">
+                <button type="button" class="close" aria-label="Close" (click)="onCloseHandled()"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Create New Lead</h4>
+            </div>
+            <div class="modal-body">
+                <create-lead (onSaveClick)="SaveLead($event[0])"></create-lead>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal !-->
+
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayChat}">
+    <div class="modal-dialog modal-lg" style="width: calc(100% - 300px);" role="document">
+        <div class="modal-content">
+            <div class="modal-header reqheader">
+                <button type="button" class="close" aria-label="Close" (click)="onCloseHandled()"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Status Report</h4>
+            </div>
+            <div class="modal-body" *ngIf="displayChat == 'block' && !displayUserRpt">
+                <p-chart type="doughnut" [data]="ChartData" (onDataSelect)="chartClicked($event,1)"></p-chart>
+            </div>
+            <div class="modal-body" *ngIf="displayChat == 'block' && displayUserRpt">
+                <p-chart type="bar" [data]="userAssingChartData" (onDataSelect)="chartClicked($event,2)"></p-chart>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal !-->

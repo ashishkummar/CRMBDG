@@ -1,0 +1,33 @@
+﻿<app-loader [loader]="isLoading"></app-loader>
+<div class="toolbar">
+    <div class="toolbarGroup">
+        <div class="toolItemLabel">
+            <span class="toolspan">Email From</span>
+        </div>
+        <div class="toolItem">
+            <p-dropdown [options]="emailIds" [(ngModel)]="selectedEmail" placeholder="Select a Email" [showClear]="true" [style]="{'width':'100%'}"></p-dropdown>
+        </div>
+    </div>
+    <div class="toolbarGroup">
+        <div class="toolItemLabel">
+            <span class="toolspan">Email To</span>
+        </div>
+        <div class="toolItem">
+            <p-chips [(ngModel)]="mailTo" allowDuplicate="false" placeholder="Enter Email id" addOnBlur="true"></p-chips>
+        </div>
+    </div>
+    <div class="toolbarGroup">
+        <div class="toolItemLabel">
+            <span class="toolspan">Subject</span>
+        </div>
+        <div class="toolItem">
+            <input id="input" type="text" pInputText [(ngModel)]="subject" placeholder="Enter Email Subject" style="width:100%;" />
+        </div>
+    </div>
+</div>
+<div class="editorContainer">
+    <p-editor [(ngModel)]="mailBody" [style]="{'height':'60vh'}"></p-editor>
+</div>
+<div class="bottomBar">
+    <button class="btn btn-primary" (click)="sendMail()" [disabled]=!isValid>Send</button>
+</div>

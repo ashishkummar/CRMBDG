@@ -1,0 +1,72 @@
+<app-loader [loader]="isLoading"></app-loader>
+<div class="row">
+    <div class="col-md-12">
+        <form [formGroup]="createLead" novalidate>
+            <div class="form-group"
+                 [ngClass]="{
+                                'has-error': createLead.get('name').invalid && (createLead.get('name').dirty || createLead.get('name').touched),
+                                'has-success': createLead.get('name').valid && (createLead.get('name').dirty || createLead.get('name').touched)
+                              }">
+                <label>Project Name</label>
+                <input type="text"
+                       class="form-control"
+                       formControlName="name">
+                <div class="invalid-feedback"
+                     *ngIf="createLead.get('name').errors && (createLead.get('name').dirty || createLead.get('name').touched)">
+                    <div class="invalid-tooltip" *ngIf="createLead.get('name').errors.required">Name is required</div>
+                </div>
+            </div>
+
+            <div class="form-group"
+                 [ngClass]="{
+                    'has-error':  createLead.get('projectType').invalid && (createLead.get('projectType').dirty ),
+                    'has-success': createLead.get('projectType').valid && (createLead.get('projectType').dirty )
+                  }">
+                <label>Project Type</label>
+                <input type="text"
+                       class="form-control"
+                       formControlName="projectType">
+                <div class="invalid-feedback" *ngIf="createLead.get('projectType').errors && (createLead.get('projectType').dirty || createLead.get('projectType').touched)">
+                    <p *ngIf="createLead.get('projectType').errors.required">Type is required</p>
+                </div>
+            </div>
+
+            <div class="form-group"
+                 [ngClass]="{
+                    'has-error':  createLead.get('projectUrl').invalid && (createLead.get('projectUrl').dirty ),
+                    'has-success': createLead.get('projectUrl').valid && (createLead.get('projectUrl').dirty )
+                  }">
+                <label>Project URL</label>
+                <input type="url"
+                       class="form-control"
+                       formControlName="projectUrl">
+                <div class="invalid-feedback"
+                     *ngIf="createLead.get('projectUrl').errors && (createLead.get('projectUrl').dirty || createLead.get('projectUrl').touched)">
+                    <p *ngIf="createLead.get('projectUrl').errors">URL is invalid</p>
+                    <p *ngIf="createLead.get('projectUrl').errors.required">URL is required</p>
+                </div>
+            </div>
+            <div class="form-group"
+                 [ngClass]="{
+                    'has-error':  createLead.get('projectLocation').invalid && (createLead.get('projectLocation').dirty ),
+                    'has-success': createLead.get('projectLocation').valid && (createLead.get('projectLocation').dirty )
+                  }">
+                <label>Project Location</label>
+                <input type="text"
+                       class="form-control"
+                       formControlName="projectLocation">
+                <div class="invalid-feedback"
+                     *ngIf="createLead.get('projectLocation').errors && (createLead.get('projectLocation').dirty || createLead.get('projectLocation').touched)">
+                    <p *ngIf="createLead.get('projectLocation').errors.required">Location is required</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Upload File</label>
+                <input type="file" id="btnUpload" value="Upload" (change)="fileChange($event)" />
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary" (click)="insertLead()" [disabled]="!createLead.valid">Save</button>
+            </div>
+        </form>
+    </div>
+</div>

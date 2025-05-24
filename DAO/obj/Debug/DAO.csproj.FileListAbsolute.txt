@@ -1,0 +1,8 @@
+C:\D Drive\Development\GitHubRepos\LmsMvcAng\DAO\bin\Debug\DAO.dll
+C:\D Drive\Development\GitHubRepos\LmsMvcAng\DAO\bin\Debug\DAO.pdb
+C:\D Drive\Development\GitHubRepos\LmsMvcAng\DAO\bin\Debug\MySql.Data.dll
+C:\D Drive\Development\GitHubRepos\LmsMvcAng\DAO\obj\Debug\DAO.csproj.CoreCompileInputs.cache
+C:\D Drive\Development\GitHubRepos\LmsMvcAng\DAO\obj\Debug\DAO.csproj.CopyComplete
+C:\D Drive\Development\GitHubRepos\LmsMvcAng\DAO\obj\Debug\DAO.dll
+C:\D Drive\Development\GitHubRepos\LmsMvcAng\DAO\obj\Debug\DAO.pdb
+C:\D Drive\Development\GitHubRepos\LmsMvcAng\DAO\obj\Debug\DAO.csprojResolveAssemblyReference.cache

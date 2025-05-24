@@ -1,0 +1,141 @@
+<p-growl [(value)]="popMsg"></p-growl>
+<div class="row"  style="overflow-y:auto;height:500px;">
+    <div class="col-md-12">
+        <form novalidate
+              [formGroup]="createLead">
+
+            <div class="form-group"
+                 [ngClass]="{
+                                'has-error': createLead.get('name').invalid && (createLead.get('name').dirty || createLead.get('name').touched),
+                                'has-success': createLead.get('name').valid && (createLead.get('name').dirty || createLead.get('name').touched)
+                              }">
+                <label>Customer Name</label>
+                <input type="text"
+                       class="form-control"
+                       formControlName="name">
+                <div class="invalid-feedback"
+                     *ngIf="createLead.get('name').errors && (createLead.get('name').dirty || createLead.get('name').touched)">
+                    <div class="invalid-tooltip" *ngIf="createLead.get('name').errors.required">Name is required</div>
+                </div>
+            </div>
+
+            <div class="form-group"
+                 [ngClass]="{
+                    'has-error':  createLead.get('email').invalid && (createLead.get('email').dirty ),
+                    'has-success': createLead.get('email').valid && (createLead.get('email').dirty )
+                  }">
+                <label>Email</label>
+                <input type="email"
+                       class="form-control"
+                       formControlName="email">
+                <div class="invalid-feedback" *ngIf="createLead.get('email').errors && (createLead.get('email').dirty || createLead.get('email').touched)">
+                    <p *ngIf="createLead.get('email').errors">Invalid email id</p>
+                    <p *ngIf="createLead.get('email').errors.required">Email id is required</p>
+                </div>
+            </div>
+
+            <div class="form-group"
+                 [ngClass]="{
+                'has-error': createLead.get('address').invalid && (createLead.get('address').dirty || createLead.get('address').touched),
+                'has-success': createLead.get('address').valid && (createLead.get('address').dirty || createLead.get('address').touched)
+              }">
+                <label>Address</label>
+                <textarea class="form-control"
+                          formControlName="address"></textarea>
+                <div class="invalid-feedback"
+                     *ngIf="createLead.get('address').errors && (createLead.get('address').dirty || createLead.get('address').touched)">
+                    <p *ngIf="createLead.get('address').errors.required">Address is required</p>
+                </div>
+            </div>
+
+            <div class="form-group"
+                 [ngClass]="{
+                'has-error': createLead.get('anniversary').invalid && (createLead.get('anniversary').dirty || createLead.get('anniversary').touched),
+                'has-success': createLead.get('anniversary').valid && (createLead.get('anniversary').dirty || createLead.get('anniversary').touched)
+              }">
+                <label>Anniversary Date</label>
+                <p-calendar formControlName="anniversary"
+                            dateFormat="dd/mm/yy"
+                            [monthNavigator]="true"
+                            [yearNavigator]="true"
+                            yearRange="1900:2030"></p-calendar>
+            </div>
+
+            <div class="form-group"
+                 [ngClass]="{
+                'has-error': createLead.get('Booking').invalid && (createLead.get('Booking').dirty || createLead.get('Booking').touched),
+                'has-success': createLead.get('Booking').valid && (createLead.get('Booking').dirty || createLead.get('Booking').touched)
+              }">
+                <label>Booking Date</label>
+                <p-calendar formControlName="Booking"
+                            dateFormat="dd/mm/yy"
+                            [monthNavigator]="true"
+                            [yearNavigator]="true"
+                            yearRange="1900:2030"></p-calendar>
+            </div>
+
+            <div class="form-group"
+                 [ngClass]="{
+                'has-error': createLead.get('DOB').invalid && (createLead.get('DOB').dirty || createLead.get('DOB').touched),
+                'has-success': createLead.get('DOB').valid && (createLead.get('DOB').dirty || createLead.get('DOB').touched)
+              }">
+                <label>Date Of Birth</label>
+                <p-calendar formControlName="DOB"
+                            dateFormat="dd/mm/yy"
+                            [monthNavigator]="true"
+                            [yearNavigator]="true"
+                            yearRange="1900:2030"></p-calendar>
+            </div>
+
+            <div class="form-group"
+                 [ngClass]="{
+                    'has-error':  createLead.get('contact').invalid && (createLead.get('contact').dirty ),
+                    'has-success': createLead.get('contact').valid && (createLead.get('contact').dirty )
+                  }">
+                <label>Contact</label>
+                <input type="text"
+                       class="form-control"
+                       formControlName="contact">
+                <div class="invalid-feedback"
+                     *ngIf="createLead.get('contact').errors && (createLead.get('contact').dirty || createLead.get('contact').touched)">
+                    <p *ngIf="createLead.get('contact').errors">Invalid contact</p>
+                    <p *ngIf="createLead.get('contact').errors.required">Email id is required</p>
+                </div>
+            </div>
+
+            <div class="form-group"
+                 [ngClass]="{
+                                'has-error': createLead.get('product').invalid && (createLead.get('product').dirty || createLead.get('product').touched),
+                                'has-success': createLead.get('product').valid && (createLead.get('product').dirty || createLead.get('product').touched)
+                              }">
+                <label>Product</label>
+                <input type="text"
+                       class="form-control"
+                       formControlName="product">
+                <div class="invalid-feedback"
+                     *ngIf="createLead.get('product').errors && (createLead.get('product').dirty || createLead.get('product').touched)">
+                    <div class="invalid-tooltip" *ngIf="createLead.get('product').errors.required">product is required</div>
+                </div>
+            </div>
+
+            <div class="form-group"
+                 [ngClass]="{
+                                'has-error': createLead.get('unitid').invalid && (createLead.get('unitid').dirty || createLead.get('unitid').touched),
+                                'has-success': createLead.get('unitid').valid && (createLead.get('unitid').dirty || createLead.get('unitid').touched)
+                              }">
+                <label>Unit ID</label>
+                <input type="text"
+                       class="form-control"
+                       formControlName="unitid">
+                <div class="invalid-feedback"
+                     *ngIf="createLead.get('unitid').errors && (createLead.get('unitid').dirty || createLead.get('unitid').touched)">
+                    <div class="invalid-tooltip" *ngIf="createLead.get('unitid').errors.required">unitid is required</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <button class="btn btn-primary" (click)="insertLead()" [disabled]="!createLead.valid">Save</button>
+            </div>
+        </form>
+    </div>
+</div>
